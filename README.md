@@ -48,6 +48,10 @@
 
 ![alt text](assets/CHD.jpg)
 
+### Wireframe
+
+![alt text](assets/Wireframe.jpg)
+
 ### User Stories
 
 #### MVP
