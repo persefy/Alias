@@ -1,4 +1,13 @@
 function Nav() {
-	return <></>
+	return (
+		<nav>
+			{/* links to pages:
+			
+			- trending
+			- ...
+			*/}
+		</nav>
+
+	)
 }
 export default Nav
