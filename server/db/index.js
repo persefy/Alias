@@ -1,17 +1,21 @@
+require('dotenv').config()
+
 const mongoose = require('mongoose')
+const DATABASE_URI = process.env.DATABASE_URI
 
-mongoose
-    .connect('mongodb://127.0.0.1:27017/aliasDatabase')
-    //atlas link would go abvove
-    .then(() => {
-        console.log('Successfully connected to MongoDB.')
-    })
-    .catch(e => {
-        console.error('Connection error', e.message)
-    })
-
-
+async function main() {
+	try {
+		await mongoose.connect(DATABASE_URI, {
+			useNewUrlParser: true,
+			useUnifiedTopology: true,
+		})
+		console.log('Successfully connected to MongoDB Atlas.')
+	} catch (e) {
+		console.error('Connection error:', e.message)
+	}
+}
 mongoose.set('debug', true)
-const db = mongoose.connection
+main()
 
+const db = mongoose.connection
 module.exports = db

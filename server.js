@@ -1,8 +1,10 @@
-const express = require('express');
-//morgan
+require('dotenv').config()
+
+const express = require('express')
+
 const logger = require('morgan')
 const bodyParser = require('body-parser')
-const db = require('./db')
+const db = require('./server/db/index')
 const cors = require('cors')
 
 //initial declaration of constants for condo unit, unit reps, unit styles controllers
@@ -13,7 +15,7 @@ const unitStyleController = require('./controllers/unitStyleController')
 
 // require() imports and middleware here ^ ///////
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001
 const app = express()
 //
 app.use(cors())
@@ -29,24 +31,24 @@ app.get('/', (req, res) => res.send('This is the landing page!'))
 app.get('/condoUnit', condoUnitController.getAllCondoUnit)
 app.get('/condoUnit/:id', condoUnitController.getCondoUnitById)
 app.post('/condoUnit', condoUnitController.createCondoUnit)
-app.put('/condoUnit/:id',condoUnitController.updateCondoUnit)
-app.delete('/condoUnit/:id',condoUnitController.deleteCondoUnit)
+app.put('/condoUnit/:id', condoUnitController.updateCondoUnit)
+app.delete('/condoUnit/:id', condoUnitController.deleteCondoUnit)
 
 //Routes for Unit Rep (UnitRep)
 app.get('/unitRep', unitRepController.getAllUnitRep)
 app.get('/unitRep/:id', unitRepController.getUnitRepById)
 app.post('/unitRep', unitRepController.createUnitRep)
-app.put('/unitRep/:id',unitRepController.updateUnitRep)
-app.delete('/unitRep/:id',unitRepController.deleteUnitRep)
+app.put('/unitRep/:id', unitRepController.updateUnitRep)
+app.delete('/unitRep/:id', unitRepController.deleteUnitRep)
 
 //Routes for Unit Style (UnitStyle)
 app.get('/unitStyle', unitStyleController.getAllUnitStyle)
 app.get('/unitStyle/:id', unitStyleController.getUnitStyleById)
 app.post('/unitStyle', unitStyleController.createUnitStyle)
-app.put('/unitStyle/:id',unitStyleController.updateUnitStyle)
-app.delete('/unitStyle/:id',unitStyleController.deleteUnitStyle)
+app.put('/unitStyle/:id', unitStyleController.updateUnitStyle)
+app.delete('/unitStyle/:id', unitStyleController.deleteUnitStyle)
 
 //catch error routes
 app.get('*', (req, res) => {
-    res.send('404 Not Found')
-  })
+	res.send('404 Not Found')
+})
