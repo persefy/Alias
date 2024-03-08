@@ -3,11 +3,10 @@ import Home from './Home'
 import AllPosts from './AllPosts'
 import Trending from './Trending'
 import Tag from './Tag'
-import Tag from './User'
+import User from './User'
 import Contact from './Contact'
 
 import { Route, Routes } from 'react-router-dom'
-import AllPosts from './AllPosts'
 
 function Main() {
 	return (
