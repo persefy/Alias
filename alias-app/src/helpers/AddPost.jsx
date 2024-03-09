@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Tag from "../components/Tag"
 
 
 function AddPost({ onSubmit }) {
@@ -8,7 +9,7 @@ function AddPost({ onSubmit }) {
 		alias: '',
 		content: '',
 //chips instead of tags (it's the same thing but this is how we can make it buttons)
-		chips: [],
+		tags: [],
 		createdAt: new Date()
 	}
 	const [postFormState, setPostFormState] = useState(initialState)
@@ -23,8 +24,8 @@ function AddPost({ onSubmit }) {
 		setPostFormState({...postFormState, [event.target.id]: event.target.value})
 	}
 
-	const handleChipAddition = (chip) => {
-		setPostFormState({...postFormState, chips: [...postFormState.chips, chip]})
+	const handleTagAddition = (tag) => {
+		setPostFormState({...postFormState, tags: [...postFormState.tags, tag]})
 	}
 
 	return (
@@ -37,7 +38,7 @@ function AddPost({ onSubmit }) {
 				<input type="text" id="alias" onChange={handleChange} value={postFormState.alias}/>
 				<label htmlFor="content">What's on your mind?</label>
 				<textarea id="content" cols="30" rows="30" onChange={handleChange} value={postFormState.content}/>
-				{/* <ChipInput onAddChip={handleChipAddition}/> */}
+				<Tag onAddTag={handleTagAddition}/>
 				<button type="submit"> Post </button>
 			</form>
 		{/* Component that is nested into Home, and All Posts */}
