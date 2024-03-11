@@ -1,10 +1,11 @@
+import { useContext } from 'react'
+import { UserContext } from '../UserContext'
 import HomePosts from '../helpers/HomePosts'
 import HomeTrending from '../helpers/HomeTrending'
 import AddPost from '../helpers/AddPost'
 
 function Home() {
-	const isLoggedIn = false
-	// Are we using useContext here to pass down if the user is logged in across all pages?
+	const { isLoggedIn } = useContext(UserContext)
 
 	return (
 		<div>
@@ -15,14 +16,14 @@ function Home() {
 			</p>
 			{isLoggedIn ? (
 				<>
-					<p>Please log in to see the posts</p>
+					<p>Welcome back!</p>
+					<HomePosts />
 					<HomeTrending />
-					{/* add post button? */}
 					<AddPost />
 				</>
 			) : (
 				<>
-					<HomePosts />
+					<p>Please log in to see your posts.</p>
 					<HomeTrending />
 					<AddPost />
 				</>
