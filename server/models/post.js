@@ -8,7 +8,12 @@ const Post = new Schema(
         alias: {type: String, required: true},
         date: {type: Date, required: true},
         user_id: {type: Schema.Types.ObjectId, ref: 'user_id'},
-        tag_id: {type: Schema.Types.ObjectId, ref: 'tag_id'}
+        tag1_id: {type: Schema.Types.ObjectId, ref: 'tag1_id'},
+        tag2_id: {type: Schema.Types.ObjectId, ref: 'tag2_id'},
+        tag3_id: {type: Schema.Types.ObjectId, ref: 'tag3_id'},
+        tag4_id: {type: Schema.Types.ObjectId, ref: 'tag4_id'},
+        tag5_id: {type: Schema.Types.ObjectId, ref: 'tag5_id'},
+        resonateReactionCount: {type:Number}
     },
     { timestamps: true }
 )
