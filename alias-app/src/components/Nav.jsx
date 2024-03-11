@@ -1,4 +1,14 @@
+import { Link } from 'react-router-dom'
+
 function Nav() {
-	return <></>
+	return (
+		<nav className="navbar">
+			<div>
+				<Link to="/">Home</Link>
+				<Link to="/trending">Trending</Link>
+				<Link to="/tags/:id">Tags</Link>
+			</div>
+		</nav>
+	)
 }
 export default Nav
