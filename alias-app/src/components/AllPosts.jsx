@@ -8,6 +8,8 @@ function AllPosts() {
 	const [filteredPosts, setFilteredPosts] = useState([])
 	const [tags, setTags] = useState(['lifestyle', 'work', 'family', 'relationship', 'friendship'])
 	const [selectedTag, setSelectedTag] = useState('')
+	const [isLoading, setIsLoading] = useState(false)
+
 
 
 	const handleTagClick = (tag) => {

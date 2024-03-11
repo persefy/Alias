@@ -3,7 +3,7 @@
 function Tag({tags, onTagClick}) {
 	return (
 		<div>
-			{tags.map(tag => (
+			{tags && tags.map(tag => (
 				<button key={tag} onClick={() => onTagClick(tag)}>
 					{tag}
 				</button>
