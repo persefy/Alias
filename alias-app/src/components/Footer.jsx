@@ -1,4 +1,9 @@
 function Footer() {
-	return <></>
+	return (
+		<>
+		{/* // link to Contact */}
+		</>
+	)
+
 }
 export default Footer
