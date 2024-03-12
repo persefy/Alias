@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 import AddPost from '../helpers/AddPost'
 import Reactions from './Reactions'
 import Tag from './Tag'
@@ -19,10 +20,9 @@ function AllPosts() {
 	useEffect(() => {
 		const fetchPosts = async () => {
 			try {
-				const response = await fetch ('api/posts')
-				const data = await response.json()
+				const response = await axios.get('api/posts')
 				//sort createdAt
-				const sortedPosts = data.posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+				const sortedPosts = response.data.posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
 				setPosts(sortedPosts)
 			} catch (error) {
 				console.error('Error fetching posts:', error)

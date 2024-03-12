@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import TrendingPost from "./TrendingPosts"
+import axios from "axios"
 
 
 function HomeTrending() {
@@ -8,9 +9,8 @@ function HomeTrending() {
 	useEffect(() => {
 		const fetchTrendingPosts = async () => {
 			try {
-				const response = await fetch('api/trending/posts')
-				const data = await response.json()
-				setTrendingPosts(data.posts)
+				const response = await axios.get('api/trending/posts')
+				setTrendingPosts(response.data.posts)
 			} catch (error) {
 				console.error('Error fetching trending posts:', error)
 			}

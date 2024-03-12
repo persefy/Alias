@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import axios from 'axios'
 
 
 function UserPosts({ userId }) {
@@ -11,13 +12,10 @@ function UserPosts({ userId }) {
 		const fetchUserPosts = async () => {
 			setIsLoading(true)
 			try {
-				const response = await fetch (`api/user/${userId}/posts`)
-				if (!response.ok) {
-					throw new Error('Failed to fetch user posts')
-				}
-				const data = await response.json()
-				setUserPosts(data.posts)
+				const response = await axios.get(`api/user/${userId}/posts`)
+				setUserPosts(response.data.posts)
 			} catch (error) {
+				console.error('Error fetching user posts:', error)
 				setError(error)
 			} finally {
 				setIsLoading(false)
@@ -28,9 +26,7 @@ function UserPosts({ userId }) {
 
 	const handleDeletePost = async (postId) => {
 		try {
-			await fetch (`api/posts/${postId}`, {
-				method: 'DELETE'
-			})
+			await axios.delete(`api/posts/${postId}`)
 			setUserPosts(prevPosts => prevPosts.filter(post => post.id !== postId))
 		} catch (error) {
 			console.error('Error deleting post:', error)

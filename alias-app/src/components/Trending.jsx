@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import Reactions from './Reactions'
 import TrendingPosts from "../helpers/TrendingPosts"
+import axios from 'axios'
 
 
 function Trending({ post }) {
@@ -12,12 +13,8 @@ function Trending({ post }) {
 		const fetchTrendingPosts = async () => {
 			setIsLoading(true)
 			try {
-				const response = await fetch('api/trending/posts')
-				if(!response.ok) {
-					throw new Error('Failed to fetch trending posts')
-				}
-				const data = await response.json()
-				const sortedPosts = data.posts.sort((a, b) => {
+				const response = await axios.get('api/trending/posts')
+				const sortedPosts = response.data.posts.sort((a, b) => {
 					const totalEngagementA = a.resonates + a.felt + a.upset
 					const totalEngagementB = b.resonates + b.felt + b.upset
 					return totalEngagementB - totalEngagementA
