@@ -7,11 +7,12 @@ const bodyParser = require('body-parser')
 const db = require('./server/db/index')
 const cors = require('cors')
 
-//initial declaration of constants for condo unit, unit reps, unit styles controllers
-const { CondoUnit, UnitRep, UnitStyle } = require('./models')
-const condoUnitController = require('./controllers/condoUnitController')
-const unitRepController = require('./controllers/unitRepController')
-const unitStyleController = require('./controllers/unitStyleController')
+//initial declaration of constants for controllers
+const { ContactMsg, Post, Tag, User } = require('./models')
+const contactMsgController = require('./controllers/contactMsgController')
+const postController = require('./controllers/postController')
+const tagController = require('./controllers/tagController')
+const userController = require('./controllers/userController')
 
 // require() imports and middleware here ^ ///////
 
@@ -27,26 +28,33 @@ app.use(bodyParser.json())
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))
 app.get('/', (req, res) => res.send('This is the landing page!'))
 
-//Routes for Condo Unit (CondoUnit)
-app.get('/condoUnit', condoUnitController.getAllCondoUnit)
-app.get('/condoUnit/:id', condoUnitController.getCondoUnitById)
-app.post('/condoUnit', condoUnitController.createCondoUnit)
-app.put('/condoUnit/:id', condoUnitController.updateCondoUnit)
-app.delete('/condoUnit/:id', condoUnitController.deleteCondoUnit)
+//Routes for ContactMsg
+app.get('/contactMsg', contactMsgController.getAllContactMsg)
+app.get('/contactMsg/:id', contactMsgController.getContactMsgById)
+app.post('/contactMsg', contactMsgController.createContactMsg)
+app.put('/contactMsg/:id', contactMsgController.updateContactMsg)
+app.delete('/contactMsg/:id', contactMsgController.deleteContactMsg)
 
-//Routes for Unit Rep (UnitRep)
-app.get('/unitRep', unitRepController.getAllUnitRep)
-app.get('/unitRep/:id', unitRepController.getUnitRepById)
-app.post('/unitRep', unitRepController.createUnitRep)
-app.put('/unitRep/:id', unitRepController.updateUnitRep)
-app.delete('/unitRep/:id', unitRepController.deleteUnitRep)
+//Routes for Post
+app.get('/post', postController.getAllPost)
+app.get('/post/:id', postController.getPostById)
+app.post('/post', postController.createPost)
+app.put('/post/:id', postController.updatePost)
+app.delete('/post/:id', postController.deletePost)
 
-//Routes for Unit Style (UnitStyle)
-app.get('/unitStyle', unitStyleController.getAllUnitStyle)
-app.get('/unitStyle/:id', unitStyleController.getUnitStyleById)
-app.post('/unitStyle', unitStyleController.createUnitStyle)
-app.put('/unitStyle/:id', unitStyleController.updateUnitStyle)
-app.delete('/unitStyle/:id', unitStyleController.deleteUnitStyle)
+//Routes for Tag
+app.get('/tag', tagController.getAllTag)
+app.get('/tag/:id', tagController.getTagById)
+app.post('/tag', tagController.createTag)
+app.put('/tag/:id', tagController.updateTag)
+app.delete('/tag/:id', tagController.deleteTag)
+
+//Routes for User
+app.get('/user', userController.getAllUser)
+app.get('/user/:id', userController.getUserById)
+app.post('/user', userController.createUser)
+app.put('/user/:id', userController.updateUser)
+app.delete('/user/:id', userController.deleteUser)
 
 //catch error routes
 app.get('*', (req, res) => {
