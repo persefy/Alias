@@ -1,5 +1,5 @@
 const db = require('../db')
-const { Post, User, Tag } = require('../models')
+const { Post, User } = require('../models')
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
@@ -7,13 +7,6 @@ const main = async () => {
   //users
   const lydiaBecker = await User.find({fullName: 'Lydia Becker'})
   const fabianRomano = await User.find({fullName: 'Fabian Romano'})
-
-  //Tag(s)
-  const lifestyle = await Tag.find({label: 'lifestyle'})
-  const work = await Tag.find({label: 'work'})
-  const family = await Tag.find({label: 'family'})
-  const relationship = await Tag.find({label: 'relationship'})
-  const friendship = await Tag.find({label: 'friendship'})
   
   const posts = [
     {
@@ -22,11 +15,11 @@ const main = async () => {
       alias: 'LB',
       date: '2024-02-23',
       user_id: lydiaBecker[0]._id,
-      tag1_id: relationship[0]._id,
-      tag2_id: '',
-      tag3_id: '',
-      tag4_id: '',
-      tag5_id: '',
+      tagLifestyle: false,
+      tagWork: false,
+      tagFamily: false,
+      tagRelationship: true,
+      tagFriendship: false,
       resonateReactionCount: 1,
       upsetReactionCount: 0,
       feelReactionCount: 3
@@ -37,11 +30,11 @@ const main = async () => {
       alias: 'LB',
       date: '2024-03-01',
       user_id: lydiaBecker[0]._id,
-      tag1_id: lifestyle[0]._id,
-      tag2_id: friendship[0]._id,
-      tag3_id: '',
-      tag4_id: '',
-      tag5_id: '',
+      tagLifestyle: true,
+      tagWork: false,
+      tagFamily: false,
+      tagRelationship: false,
+      tagFriendship: true,
       resonateReactionCount: 2,
       upsetReactionCount: 1,
       feelReactionCount: 0
@@ -52,11 +45,11 @@ const main = async () => {
       alias: 'youKnow',
       date: '2024-03-03',
       user_id: fabianRomano[0]._id,
-      tag1_id: lifestyle[0]._id,
-      tag2_id: '',
-      tag3_id: '',
-      tag4_id: '',
-      tag5_id: '',
+      tagLifestyle: true,
+      tagWork: false,
+      tagFamily: false,
+      tagRelationship: false,
+      tagFriendship: false,
       resonateReactionCount: 2,
       upsetReactionCount: 1,
       feelReactionCount: 1
@@ -67,11 +60,11 @@ const main = async () => {
       alias: 'youKnow',
       date: '2024-03-07',
       user_id: fabianRomano[0]._id,
-      tag1_id: lifestyle[0]._id,
-      tag2_id: '',
-      tag3_id: '',
-      tag4_id: '',
-      tag5_id: '',
+      tagLifestyle: true,
+      tagWork: false,
+      tagFamily: false,
+      tagRelationship: false,
+      tagFriendship: false,
       resonateReactionCount: 1,
       upsetReactionCount: 0,
       feelReactionCount: 0
@@ -82,11 +75,11 @@ const main = async () => {
       alias: 'LB',
       date: '2024-03-01',
       user_id: lydiaBecker[0]._id,
-      tag1_id: family[0]._id,
-      tag2_id: relationship[0]._id,
-      tag3_id: '',
-      tag4_id: '',
-      tag5_id: '',
+      tagLifestyle: false,
+      tagWork: false,
+      tagFamily: true,
+      tagRelationship: true,
+      tagFriendship: false,
       resonateReactionCount: 0,
       upsetReactionCount: 2,
       feelReactionCount: 0

@@ -8,10 +8,9 @@ const db = require('./server/db/index')
 const cors = require('cors')
 
 //initial declaration of constants for controllers
-const { ContactMsg, Post, Tag, User } = require('./server/models')
+const { ContactMsg, Post, User } = require('./server/models')
 const contactMsgController = require('./server/controllers/contactMsgController')
 const postController = require('./server/controllers/postController')
-const tagController = require('./server/controllers/tagController')
 const userController = require('./server/controllers/userController')
 
 // require() imports and middleware here ^ ///////
@@ -43,13 +42,6 @@ app.get('/post/:id', postController.getPostById)
 app.post('/post', postController.createPost)
 app.put('/post/:id', postController.updatePost)
 app.delete('/post/:id', postController.deletePost)
-
-//Routes for Tag
-app.get('/tag', tagController.getAllTag)
-app.get('/tag/:id', tagController.getTagById)
-app.post('/tag', tagController.createTag)
-app.put('/tag/:id', tagController.updateTag)
-app.delete('/tag/:id', tagController.deleteTag)
 
 //Routes for User
 app.get('/user', userController.getAllUser)
