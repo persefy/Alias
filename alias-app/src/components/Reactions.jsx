@@ -24,18 +24,18 @@ function Reactions() {
     return (
         <div className="reactions">
             <div>
-                <button onClick={() => addReaction('resonates')}> Resonates </button>
-                <button onClick={() => removeReaction('resonates')}> Unresonate </button>
+                <button onClick={() => addReaction('resonates')}> ❣️ </button>
+                <button onClick={() => removeReaction('resonates')}> 💔 </button>
                 Resonates: {reactions.resonates}
             </div>
             <div>
-                <button onClick={() => addReaction('felt')}> Felt </button>
-                <button onClick={() => removeReaction('felt')}> Unfelt </button>
+                <button onClick={() => addReaction('felt')}> 🥺 </button>
+                <button onClick={() => removeReaction('felt')}> 🤔 </button>
                 Felt: {reactions.felt}
             </div>
             <div>
-                <button onClick={() => addReaction('upset')}> Upset </button>
-                <button onClick={() => removeReaction('upset')}> Unupset </button>
+                <button onClick={() => addReaction('upset')}> 😒 </button>
+                <button onClick={() => removeReaction('upset')}> 🙄 </button>
                 Upset: {reactions.upset}
             </div>
         </div>

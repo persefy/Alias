@@ -8,7 +8,6 @@ function AddPost({ onSubmit }) {
 		title: '',
 		alias: '',
 		content: '',
-//chips instead of tags (it's the same thing but this is how we can make it buttons)
 		tags: [],
 		createdAt: new Date()
 	}

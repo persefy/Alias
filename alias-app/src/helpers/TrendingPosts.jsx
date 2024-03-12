@@ -1,4 +1,3 @@
-// import React, { useState } from 'react'
 import Reactions from '../components/Reactions'
 
 function TrendingPost({ post }) {
