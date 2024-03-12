@@ -8,11 +8,11 @@ const db = require('./server/db/index')
 const cors = require('cors')
 
 //initial declaration of constants for controllers
-const { ContactMsg, Post, Tag, User } = require('./models')
-const contactMsgController = require('./controllers/contactMsgController')
-const postController = require('./controllers/postController')
-const tagController = require('./controllers/tagController')
-const userController = require('./controllers/userController')
+const { ContactMsg, Post, Tag, User } = require('./server/models')
+const contactMsgController = require('./server/controllers/contactMsgController')
+const postController = require('./server/controllers/postController')
+const tagController = require('./server/controllers/tagController')
+const userController = require('./server/controllers/userController')
 
 // require() imports and middleware here ^ ///////
 
