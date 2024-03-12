@@ -13,7 +13,9 @@ const Post = new Schema(
         tag3_id: {type: Schema.Types.ObjectId, ref: 'tag3_id'},
         tag4_id: {type: Schema.Types.ObjectId, ref: 'tag4_id'},
         tag5_id: {type: Schema.Types.ObjectId, ref: 'tag5_id'},
-        resonateReactionCount: {type:Number}
+        resonateReactionCount: {type:Number},
+        upsetReactionCount: {type:Number},
+        feelReactionCount: {type:Number}
     },
     { timestamps: true }
 )
