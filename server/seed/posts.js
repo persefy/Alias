@@ -27,7 +27,9 @@ const main = async () => {
       tag3_id: '',
       tag4_id: '',
       tag5_id: '',
-      resonateReactionCount: 1
+      resonateReactionCount: 1,
+      upsetReactionCount: 0,
+      feelReactionCount: 3
     },  
     {
       title: 'Spring approaches',
@@ -40,7 +42,9 @@ const main = async () => {
       tag3_id: '',
       tag4_id: '',
       tag5_id: '',
-      resonateReactionCount: 2
+      resonateReactionCount: 2,
+      upsetReactionCount: 1,
+      feelReactionCount: 0
     },  
     {
       title: "Aren't all meals foundationally sandwhiches?",
@@ -53,7 +57,9 @@ const main = async () => {
       tag3_id: '',
       tag4_id: '',
       tag5_id: '',
-      resonateReactionCount: 2
+      resonateReactionCount: 2,
+      upsetReactionCount: 1,
+      feelReactionCount: 1
     },  
     {
       title: 'Do you think that plants are really trying to hurt us?',
@@ -66,7 +72,9 @@ const main = async () => {
       tag3_id: '',
       tag4_id: '',
       tag5_id: '',
-      resonateReactionCount: 1
+      resonateReactionCount: 1,
+      upsetReactionCount: 0,
+      feelReactionCount: 0
     },
     {
       title: "Ignore the obvious, and you'll have to deall with surprises",
@@ -79,7 +87,9 @@ const main = async () => {
       tag3_id: '',
       tag4_id: '',
       tag5_id: '',
-      resonateReactionCount: 0
+      resonateReactionCount: 0,
+      upsetReactionCount: 2,
+      feelReactionCount: 0
     }
   ]
     await Post.insertMany(posts)
