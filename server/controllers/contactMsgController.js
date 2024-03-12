@@ -1,6 +1,6 @@
 const { ContactMsg } = require('../models');
 
-const getContactMsg = async (req,res) => {
+const getAllContactMsg = async (req,res) => {
     try {
         const contactMsgs = await ContactMsg.find()
         res.json(contactMsgs)
@@ -61,7 +61,7 @@ const deleteContactMsg = async (req, res) => {
 }
 
 module.exports = {
-    getContactMsg,
+    getAllContactMsg,
     getContactMsgById,
     createContactMsg,
     updateContactMsg,
