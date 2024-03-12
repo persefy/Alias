@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import UserContext from '../UserContext'
 
 function Login() {
@@ -7,6 +8,7 @@ function Login() {
 		username: '',
 		password: '',
 	})
+	const navigate = useNavigate()
 
 	const handleChange = (e) => {
 		setLogIn({ ...login, [e.target.id]: e.target.value })
@@ -16,8 +18,11 @@ function Login() {
 		e.preventDefault()
 		// console.log('Login form submitted', login)
 		setUserInfo({ ...login, lastLogIn: new Date(Date.now()).toLocaleString() })
-		// console.log('New user created: ', { setUserInfo })
+		// console.log('User created: ', { setUserInfo })
+		navigate('/user')
 	}
+
+	//Need to include error handling in case passwords do not match...etc
 
 	return (
 		<div className="form">
