@@ -25,6 +25,8 @@ app.use(express.json())
 app.use(logger('dev'))
 app.use(bodyParser.json())
 // app.use() middleware here ^ ///////////////////
+db.on('error', console.error.bind(console, 'MongoDB Atlas connection error:'))
+
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))
 app.get('/', (req, res) => res.send('This is the landing page!'))
 
