@@ -9,6 +9,7 @@ function AllPosts() {
 	const [filteredPosts, setFilteredPosts] = useState([])
 	const [tags, setTags] = useState(['lifestyle', 'work', 'family', 'relationship', 'friendship'])
 	const [selectedTag, setSelectedTag] = useState('')
+	const [isLoading, setIsLoading] = useState(true)
 
 
 	const handleTagClick = (tag) => {
@@ -24,6 +25,7 @@ function AllPosts() {
 				//sort createdAt
 				const sortedPosts = response.data.posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
 				setPosts(sortedPosts)
+				setIsLoading(false)
 			} catch (error) {
 				console.error('Error fetching posts:', error)
 			}

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Tag from "../components/Tag"
+import axios from 'axios'
 
 function AddPost({ onSubmit }) {
   // Hardcoded list of tags
@@ -19,7 +20,12 @@ function AddPost({ onSubmit }) {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      // Submit logic here
+		const response = await axios.post('http://localhost:3001/post', postFormState)
+		if (response.status === 201) {
+			onSubmit()
+			setPostFormState(initialState)
+		} else {
+		}
     } catch (error) {
       console.error("Error creating post:", error)
       setError(error)
