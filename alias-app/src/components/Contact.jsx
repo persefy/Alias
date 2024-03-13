@@ -1,4 +1,8 @@
 function Contact() {
-	return <></>
+	return (
+		<>
+		{/* Send feedback form here */}
+		</>
+	)
 }
 export default Contact
