@@ -1,15 +1,33 @@
+import { useState } from "react"
 
+function Tag({ tags, onTagClick }) {
+  const [activeTags, setActiveTags] = useState([])
 
-function Tag({tags, onTagClick}) {
-	return (
-		<div>
-			{tags && tags.map(tag => (
-				<button key={tag} onClick={() => onTagClick(tag)}>
-					{tag}
-				</button>
-			))}
-			{/* Display selected tag filtered post list */}
-		</div>
-	)
+  const handleClick = (tag, event) => {
+    event.preventDefault(); // Prevent default form submission
+    // Toggle active state of the tag
+    const updatedActiveTags = activeTags.includes(tag)
+      ? activeTags.filter((t) => t !== tag)
+      : [...activeTags, tag]
+    setActiveTags(updatedActiveTags)
+
+    onTagClick(tag)
+  };
+
+  return (
+    <div>
+      {tags &&
+        tags.map((tag) => (
+          <button
+            key={tag}
+            onClick={(e) => handleClick(tag, e)} 
+            className={activeTags.includes(tag) ? "active" : ""}
+          >
+            {tag}
+          </button>
+        ))}
+    </div>
+  );
 }
+
 export default Tag

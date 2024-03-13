@@ -2,46 +2,45 @@ import { useEffect, useState } from "react"
 import TrendingPost from "./TrendingPosts"
 import axios from "axios"
 
-
 function HomeTrending() {
-	const [trendingPosts, setTrendingPosts] = useState([])
+  const [trendingPosts, setTrendingPosts] = useState([])
 
-	useEffect(() => {
-		const fetchTrendingPosts = async () => {
-			try {
-				const response = await axios.get('api/trending/posts')
-				setTrendingPosts(response.data.posts)
-			} catch (error) {
-				console.error('Error fetching trending posts:', error)
-			}
-		}
-		fetchTrendingPosts()
-	}, [])
+  useEffect(() => {
+    const fetchTrendingPosts = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/post')
+        setTrendingPosts(response.data.posts || [])
+      } catch (error) {
+        console.error('Error fetching trending posts:', error)
+      }
+    };
+    fetchTrendingPosts()
+  }, []);
 
-	const calculateTotalEngagement = (post) => {
-		return post.reactions
-	}
+  const calculateTotalEngagement = (post) => {
+    return post.reactions
+  };
 
-	const sortedTrendingPosts = trendingPosts.sort((a, b) => {
-		return calculateTotalEngagement(b) - calculateTotalEngagement(a)
-	})
+  // Check if trendingPosts is defined and has a length before accessing its properties
+  if (!Array.isArray(trendingPosts) || trendingPosts.length === 0) {
+    return <div>No trending posts available</div>
+  }
 
-	const top3TrendingPosts = sortedTrendingPosts.slice(0, 3)
+  const sortedTrendingPosts = trendingPosts.sort(
+    (a, b) => calculateTotalEngagement(b) - calculateTotalEngagement(a)
+  )
+  const top3TrendingPosts = sortedTrendingPosts.slice(0, 3)
 
-
-	return (
-		<div>
-			<h2> Trending Entries </h2>
-			{top3TrendingPosts.map((post) => (
-				<TrendingPost key={post.id} post={post} />
-			))}
-		{/* Component that is nested into Home */}
-		{/* 
-		- Display top [3] posts based on engagement = total count
-		- greatest to least
-		
-		*/}
-		</div>
-	)
+  return (
+    <div>
+      <h2> Trending Entries </h2>
+      {top3TrendingPosts.map((post) => (
+        <TrendingPost key={post.id} post={post} />
+      ))}
+    </div>
+  )
 }
+
 export default HomeTrending
+
+

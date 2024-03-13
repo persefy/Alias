@@ -13,7 +13,7 @@ function Trending({ post }) {
 		const fetchTrendingPosts = async () => {
 			setIsLoading(true)
 			try {
-				const response = await axios.get('api/trending/posts')
+				const response = await axios.get('http://localhost:3001/post')
 				const sortedPosts = response.data.posts.sort((a, b) => {
 					const totalEngagementA = a.resonates + a.felt + a.upset
 					const totalEngagementB = b.resonates + b.felt + b.upset
