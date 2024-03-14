@@ -12,12 +12,6 @@ function AllPosts() {
 	const [isLoading, setIsLoading] = useState(true)
 
 
-	const handleTagClick = (tag) => {
-		setSelectedTag(tag)
-		const filtered = posts.filter(post => post.tags.includes(tag))
-		setFilteredPosts(filtered)
-	}
-
 	useEffect(() => {
 		const fetchPosts = async () => {
 			try {
@@ -32,6 +26,17 @@ function AllPosts() {
 		}
 		fetchPosts()
 	}, [])
+
+	const handleTagClick = (tag, event) => {
+		event.preventDefault()
+		setSelectedTags((prevTags) => {
+			const updatedTags = prevTags.includes(tag)
+				? prevTags.filter((t) => t !== tag)
+				: [...prevTags, tag]
+			return updatedTags
+		})
+
+	}
 
 //Conditional rendering
 	if (isLoading) {
@@ -67,8 +72,14 @@ function AllPosts() {
                             <h3>{post.title}</h3>
                             <p>{post.content}</p>
                             <Reactions />
-                            <Tag tags={tags} onTagClick={handleTagClick} />
-                        </div>
+                            <Tag tags={['lifestyle', 'work', 'family', 'relationship', 'friendship']} onTagClick={handleTagClick} />
+							<div>
+								<p>Assigned Tags: </p>
+								{selectedTags.map((tag) => (
+									<span key={tag}>{tag}</span>
+								))}
+							</div>
+						</div>
                     ))
                 )}
 				{selectedTag === '' && <div> Please select a tag to filter posts. </div>}
