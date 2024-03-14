@@ -5,7 +5,6 @@ function Tag({ tags, onTagClick }) {
   const [activeTags, setActiveTags] = useState([])
 
   const handleTagClick = (tag) => {
-    event.preventDefault()
     // Toggle active state of the tag
     const updatedActiveTags = activeTags.includes(tag)
       ? activeTags.filter((t) => t !== tag)
