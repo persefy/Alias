@@ -1,6 +1,9 @@
 import Reactions from '../components/Reactions'
 
 function TrendingPost({ post }) {
+    console.log("Tags:", post.tags)
+
+    
     return (
         <div key={post.id}>
             <h3>{post.title}</h3>

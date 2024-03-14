@@ -12,7 +12,7 @@ function UserPosts({ userId }) {
 		const fetchUserPosts = async () => {
 			setIsLoading(true)
 			try {
-				const response = await axios.get(`api/user/${userId}/posts`)
+				const response = await axios.get(`http://localhost:3001/${userId}/posts`)
 				setUserPosts(response.data.posts)
 			} catch (error) {
 				console.error('Error fetching user posts:', error)
@@ -26,7 +26,7 @@ function UserPosts({ userId }) {
 
 	const handleDeletePost = async (postId) => {
 		try {
-			await axios.delete(`api/posts/${postId}`)
+			await axios.delete(`http://localhost:3001/post/${postId}`)
 			setUserPosts(prevPosts => prevPosts.filter(post => post.id !== postId))
 		} catch (error) {
 			console.error('Error deleting post:', error)
