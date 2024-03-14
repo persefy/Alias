@@ -21,16 +21,20 @@ function Tag({ tags, onTagClick }) {
     <div>
       <h2>Tags</h2>
       <div>
-        {tags.map((tag) => (
-          <Link key={tag} to={`/tags/${tag}`}>
-          <button
-            key={tag}
-            onClick={() => handleTagClick(tag)}
-            className={activeTags.includes(tag) ? 'active' : ''}
-          >
+        {tags && tags.map((tag) => (
+          <button key={tag} onClick={() => handleClick(tag)}
+          className={activeTags.includes(tag) ? "active" : ""} >
             {tag}
-          </button>
-        </Link>
+          </button>  
+        //   <Link key={tag} to={`/tags/${tag}`}>
+        //   <button
+        //     key={tag}
+        //     onClick={() => handleTagClick(tag)}
+        //     className={activeTags.includes(tag) ? 'active' : ''}
+        //   >
+        //     {tag}
+        //   </button>
+        // </Link>
         ))}
       </div>
       <div>

@@ -6,7 +6,7 @@ function Nav() {
 			<div>
 				<Link to="/">Home</Link>
 				<Link to="/trending">Trending</Link>
-				<Link to="/tags/:id">Tags</Link>
+				<Link to="/tags/:tag">Tags</Link>
 			</div>
 		</nav>
 	)
