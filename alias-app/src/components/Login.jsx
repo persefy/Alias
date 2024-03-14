@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import UserContext from '../UserContext'
 
 function Login() {
-	const { setUserInfo } = useContext(UserContext)
+	const { setUserInfo, setIsLoggedIn } = useContext(UserContext)
 	const [login, setLogIn] = useState({
 		username: '',
 		password: '',
@@ -18,6 +18,8 @@ function Login() {
 		e.preventDefault()
 		// console.log('Login form submitted', login)
 		setUserInfo({ ...login, lastLogIn: new Date(Date.now()).toLocaleString() })
+		// update login status
+		setIsLoggedIn(true)
 		// console.log('User created: ', { setUserInfo })
 		navigate('/user')
 	}
