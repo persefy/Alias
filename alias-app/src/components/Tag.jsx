@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function Tag({ tags, onTagClick }) {
-	// const tags = ['lifestyle', 'work', 'relationship', 'family', 'friendship']
 	const [activeTags, setActiveTags] = useState([])
 
 	const handleClick = (tag, event) => {
@@ -27,15 +26,6 @@ function Tag({ tags, onTagClick }) {
 						>
 							{tag}
 						</button>
-						//   <Link key={tag} to={`/tags/${tag}`}>
-						//   <button
-						//     key={tag}
-						//     onClick={() => handleTagClick(tag)}
-						//     className={activeTags.includes(tag) ? 'active' : ''}
-						//   >
-						//     {tag}
-						//   </button>
-						// </Link>
 					))}
 			</div>
 			<div>
