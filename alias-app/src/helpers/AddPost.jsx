@@ -16,7 +16,7 @@ function AddPost() {
     setPostFormState({ ...postFormState, [id]: value });
   };
 
-  const handleTagClick = (tag, event) => {
+  const handleTagClick = (tag) => {
     // event.preventDefault()
     setPostFormState((prevFormState) => ({
       ...prevFormState,
@@ -56,11 +56,6 @@ function AddPost() {
         <label htmlFor="content">What's on your mind?</label>
         <textarea id="content" cols="30" rows="5" onChange={handleChange} value={postFormState.content} />
         <Tag tags={['lifestyle', 'work', 'family', 'relationship', 'friendship']} onTagClick={handleTagClick} />
-        <ul>
-          {postFormState.selectedTags.map((tag) => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ul>
         <button type="submit">Post</button>
       </form>
     </div>
