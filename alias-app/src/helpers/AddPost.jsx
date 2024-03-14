@@ -17,13 +17,14 @@ function AddPost() {
   };
 
   const handleTagClick = (tag, event) => {
-    event.preventDefault()
+    // event.preventDefault()
     setPostFormState((prevFormState) => ({
       ...prevFormState,
       selectedTags: prevFormState.selectedTags.includes(tag)
         ? prevFormState.selectedTags.filter((t) => t !== tag)
         : [...prevFormState.selectedTags, tag],
     }));
+    console.log("Clicked tag:", tag)
   };
 
   const handleSubmit = async (event) => {

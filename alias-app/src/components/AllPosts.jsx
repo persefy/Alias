@@ -71,7 +71,7 @@ function AllPosts() {
                         <div key={post.id}>
                             <h3>{post.title}</h3>
                             <p>{post.content}</p>
-                            <Reactions />
+                            <Reactions postId={post.id}/>
                             <Tag tags={['lifestyle', 'work', 'family', 'relationship', 'friendship']} onTagClick={handleTagClick} />
 							<div>
 								<p>Assigned Tags: </p>
