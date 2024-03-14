@@ -20,10 +20,8 @@ function CreateAccount() {
 	const navigate = useNavigate()
 
 	const handleChange = (e) => {
-		// reset the valid flag back to true everytime user types something in the input to correct anything if it is incorrect
 		setFormState({ ...formState, [e.target.id]: e.target.value, valid: true })
 	}
-
 	const validateUserInputs = () => {
 		let isFormValid = true
 		let errors = {}
@@ -64,7 +62,6 @@ function CreateAccount() {
 		e.preventDefault()
 
 		if (validateUserInputs()) {
-			// Assuming setUserInfo updates the user context, reflecting a successful account creation
 			setUserInfo({
 				fullName: formState.fullName,
 				username: formState.username,
@@ -81,7 +78,6 @@ function CreateAccount() {
 			setIsAccountCreated(false)
 		}
 	}
-
 	return (
 		<div className="form">
 			<h2>Create New Account</h2>

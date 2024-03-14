@@ -16,16 +16,11 @@ function Login() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		// console.log('Login form submitted', login)
+
 		setUserInfo({ ...login, lastLogIn: new Date(Date.now()).toLocaleString() })
-		// update login status
 		setIsLoggedIn(true)
-		// console.log('User created: ', { setUserInfo })
 		navigate('/user')
 	}
-
-	//Need to include error handling in case passwords do not match...etc
-
 	return (
 		<div className="form">
 			<h2>Log into your Alias account!</h2>

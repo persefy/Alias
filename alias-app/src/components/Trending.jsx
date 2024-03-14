@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 import Reactions from './Reactions'
-import TrendingPosts from "../helpers/TrendingPosts"
+import TrendingPosts from '../helpers/TrendingPosts'
 import axios from 'axios'
-
 
 function Trending({ post }) {
 	const [trendingPosts, setTrendingPosts] = useState([])
@@ -36,22 +35,19 @@ function Trending({ post }) {
 		return <div>Error: {error.message}</div>
 	}
 
-
 	return (
-        <div>
-            <h2>Trending Entries</h2>
-            {trendingPosts.length === 0 ? (
-                <div>No trending posts found.</div>
-            ) : (
-                <div className="trending-posts">
-                    {trendingPosts.map(post => (
-                        <TrendingPosts key={post.id} post={post} />
-                    ))}
-                </div>
-            )}
-        </div>
-    )
+		<div>
+			<h2>Trending Entries</h2>
+			{trendingPosts.length === 0 ? (
+				<div>No trending posts found.</div>
+			) : (
+				<div className="trending-posts">
+					{trendingPosts.map((post) => (
+						<TrendingPosts key={post.id} post={post} />
+					))}
+				</div>
+			)}
+		</div>
+	)
 }
 export default Trending
-
-{/* Dedicated page to display all trending posts, in descending order (most engagement to least) */}

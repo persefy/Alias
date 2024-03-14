@@ -7,7 +7,6 @@ import Contact from './Contact'
 
 function User() {
 	const { setIsLoggedIn } = useContext(UserContext)
-
 	const handleLogout = () => {
 		setIsLoggedIn(false)
 	}
@@ -25,7 +24,6 @@ function User() {
 			<TrendingPosts />
 			<Contact />
 			<Footer />
-
 			<button onClick={handleLogout}>Log Out</button>
 		</>
 	)

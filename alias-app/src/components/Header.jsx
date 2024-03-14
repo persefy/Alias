@@ -3,7 +3,7 @@ function Header() {
 	return (
 		<header>
 			<h1>Alias</h1>
-			<Nav/>
+			<Nav />
 		</header>
 	)
 }

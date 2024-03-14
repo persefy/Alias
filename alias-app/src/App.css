@@ -3,7 +3,6 @@
 	margin: 0 auto;
 	text-align: center;
 }
-/* Footer Styling below------------ */
 footer {
 	background-color: #f9f8f8;
 	padding-bottom: 10px;
@@ -13,7 +12,7 @@ footer {
 	background-color: #5f5e5e;
 	padding: 40px 20px 60px;
 	font-size: 1.2rem;
-	background-image: url("https://www.transparenttextures.com/patterns/wild-oliva.png");
+	background-image: url('https://www.transparenttextures.com/patterns/wild-oliva.png');
 	/* ref: https://www.transparenttextures.com/ */
 }
 .contactCtaBtn {
@@ -23,13 +22,18 @@ footer {
 	margin-top: 5px;
 	text-decoration: none;
 	border-radius: 3px;
-	background-image: linear-gradient(to right, #a29e89 0%, #f5f5c4  51%, #b2aa84  100%);
+	background-image: linear-gradient(
+		to right,
+		#a29e89 0%,
+		#f5f5c4 51%,
+		#b2aa84 100%
+	);
 	transition: 0.5s;
 	background-size: 200% auto;
 	/* gradient ref: https://gradientbuttons.colorion.co/ */
-}	
+}
 .contactCtaBtn:hover {
-	background-position: right center; /* change the direction of the change here */
+	background-position: right center;
 	color: #202020;
 }
 .footerTeamRef {
@@ -39,11 +43,12 @@ footer {
 	display: inline-block;
 	width: 20px;
 	margin-bottom: -2px;
-	opacity: .5;
+	opacity: 0.5;
 }
-.footerTeamRef p, a {
+.footerTeamRef p,
+a {
 	color: #9e9b9b;
-	font-size: .95rem;
+	font-size: 0.95rem;
 }
 .footerTeamRef span.teamMemberLink {
 	display: block;
@@ -58,17 +63,17 @@ footer {
 .footerTeamRef img {
 	color: #afadad;
 }
-.iconCredit, .iconCredit a {
+.iconCredit,
+.iconCredit a {
 	color: #ccc;
-	font-size: .80rem;
+	font-size: 0.8rem;
 }
-.footerTeamRef a:hover, .iconCredit a:hover {
-	color: #47a6d8
+.footerTeamRef a:hover,
+.iconCredit a:hover {
+	color: #47a6d8;
 }
-/* Footer Styling above------------ */
 
 @media screen and (min-width: 630px) {
-	/* Footer Styling below------------ */
 	.footerTeamRef p {
 		margin-top: 15px;
 		margin-bottom: 0;
@@ -80,6 +85,4 @@ footer {
 		display: inline-block;
 		line-height: 2;
 	}
-	/* Footer Styling above------------ */
 }
-	
