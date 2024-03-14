@@ -13,7 +13,7 @@ function AllTags ({ tags }) {
         <div>
             <h2> Tags </h2>
             <ul>
-                {tags.map(tag => (
+                {tags && tags.map(tag => (
                     <div key={tag}>
                         <Link to={`/tags/${tag}`} onClick={() => handleTagClick(tag)}>
                             {selectedTag === tag ? (
