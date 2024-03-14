@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import Reactions from "../components/Reactions"
+import AllPosts from '../components/AllPosts'
 
 function HomePosts({ startDate, endDate}) {
 	const [posts, setPosts] = useState([])
@@ -30,9 +32,12 @@ function HomePosts({ startDate, endDate}) {
 					<li key={post.id}>
 						<h3>{post.title}</h3>
 						<p>{post.content}</p>
+						<Reactions postId={post.id} />
 					</li>
 				))}
 			</ul>
+			<hr />
+			<AllPosts />
 		</div>
 	)
 }
