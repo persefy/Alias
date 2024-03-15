@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { UserContext } from '../UserContext'
+import { Link } from 'react-router-dom'
 
 function CreateAccount() {
 	const initialState = {
@@ -18,6 +19,16 @@ function CreateAccount() {
 	const [isAccountCreated, setIsAccountCreated] = useState(false)
 	const { setIsLoggedIn, setUserInfo } = useContext(UserContext)
 	const navigate = useNavigate()
+
+	useEffect(() => {
+		if (isAccountCreated) {
+			const timer = setTimeout(() => {
+				navigate('/')
+			}, 2000) // will display message than navigate in 2 seconds
+			return () => clearTimeout(timer)
+		}
+	}, [isAccountCreated, navigate])
+	// Example from 'https://www.geeksforgeeks.org/using-settimeouts-in-react-components/'
 
 	const handleChange = (e) => {
 		// reset the valid flag back to true everytime user types something in the input to correct anything if it is incorrect
@@ -71,10 +82,8 @@ function CreateAccount() {
 				phoneNumber: formState.phoneNumber,
 				birthdate: formState.birthdate,
 			})
-			setFormState(initialState)
 			setIsLoggedIn(true)
 			setIsAccountCreated(true)
-			setTimeout(() => navigate('/user'), 2000)
 		} else {
 			console.log('Account creation unsuccessful')
 			setIsAccountCreated(false)
@@ -83,86 +92,90 @@ function CreateAccount() {
 
 	return (
 		<div className="form">
-			<h2>Create New Account</h2>
-			<form onSubmit={handleSubmit}>
-				<label htmlFor="fullName">Full Name</label>
-				<input
-					type="text"
-					id="fullName"
-					value={formState.fullName}
-					onChange={handleChange}
-				/>
-				{inputErrors.fullName && (
-					<p className="error">{inputErrors.fullName}</p>
-				)}
+			<h2>Create new account</h2>
+			{isAccountCreated ? (
+				<p className="valid">Thank you for creating an account!</p>
+			) : (
+				<form onSubmit={handleSubmit}>
+					<label htmlFor="fullName">Full Name</label>
+					<input
+						type="text"
+						id="fullName"
+						value={formState.fullName}
+						onChange={handleChange}
+					/>
+					{inputErrors.fullName && (
+						<p className="error">{inputErrors.fullName}</p>
+					)}
 
-				<label htmlFor="username">Username</label>
-				<input
-					type="text"
-					id="username"
-					value={formState.username}
-					onChange={handleChange}
-				/>
-				{inputErrors.username && (
-					<p className="error">{inputErrors.username}</p>
-				)}
+					<label htmlFor="username">Username</label>
+					<input
+						type="text"
+						id="username"
+						value={formState.username}
+						onChange={handleChange}
+					/>
+					{inputErrors.username && (
+						<p className="error">{inputErrors.username}</p>
+					)}
 
-				<label htmlFor="password">Password</label>
-				<input
-					type="password"
-					id="password"
-					value={formState.password}
-					onChange={handleChange}
-				/>
-				{inputErrors.password && (
-					<p className="error">{inputErrors.password}</p>
-				)}
+					<label htmlFor="password">Password</label>
+					<input
+						type="password"
+						id="password"
+						value={formState.password}
+						onChange={handleChange}
+					/>
+					{inputErrors.password && (
+						<p className="error">{inputErrors.password}</p>
+					)}
 
-				<label htmlFor="passwordConfirm">Confirm password</label>
-				<input
-					type="password"
-					id="passwordConfirm"
-					value={formState.passwordConfirm}
-					onChange={handleChange}
-				/>
-				{inputErrors.passwordConfirm && (
-					<p className="error">{inputErrors.passwordConfirm}</p>
-				)}
+					<label htmlFor="passwordConfirm">Confirm password</label>
+					<input
+						type="password"
+						id="passwordConfirm"
+						value={formState.passwordConfirm}
+						onChange={handleChange}
+					/>
+					{inputErrors.passwordConfirm && (
+						<p className="error">{inputErrors.passwordConfirm}</p>
+					)}
 
-				<label htmlFor="email">Email</label>
-				<input
-					type="email"
-					id="email"
-					value={formState.email}
-					onChange={handleChange}
-				/>
+					<label htmlFor="email">Email</label>
+					<input
+						type="email"
+						id="email"
+						value={formState.email}
+						onChange={handleChange}
+					/>
 
-				<label htmlFor="phoneNumber">Phone Number</label>
-				<input
-					type="text"
-					id="phoneNumber"
-					value={formState.phoneNumber}
-					onChange={handleChange}
-				/>
-				{inputErrors.phoneNumber && (
-					<p className="error">{inputErrors.phoneNumber}</p>
-				)}
+					<label htmlFor="phoneNumber">Phone Number</label>
+					<input
+						type="text"
+						id="phoneNumber"
+						value={formState.phoneNumber}
+						onChange={handleChange}
+					/>
+					{inputErrors.phoneNumber && (
+						<p className="error">{inputErrors.phoneNumber}</p>
+					)}
 
-				<label htmlFor="birthdate">Birthdate</label>
-				<input
-					type="date"
-					id="birthdate"
-					value={formState.birthdate}
-					onChange={handleChange}
-				/>
-				{inputErrors.birthdate && (
-					<p className="error">{inputErrors.birthdate}</p>
-				)}
-				{isAccountCreated && (
-					<p className="valid">Account successfully created!</p>
-				)}
-				<button type="submit">Create Account</button>
-			</form>
+					<label htmlFor="birthdate">Birthdate</label>
+					<input
+						type="date"
+						id="birthdate"
+						value={formState.birthdate}
+						onChange={handleChange}
+					/>
+					{inputErrors.birthdate && (
+						<p className="error">{inputErrors.birthdate}</p>
+					)}
+					<button type="submit">Create Account</button>
+				</form>
+			)}
+			<p>
+				Already have an Account? <Link to="/login">Log in</Link>
+			</p>
 		</div>
 	)
 }

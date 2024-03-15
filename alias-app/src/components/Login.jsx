@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import UserContext from '../UserContext'
+import { UserContext } from '../UserContext'
+import { Link } from 'react-router-dom'
 
 function Login() {
 	const { setUserInfo, setIsLoggedIn } = useContext(UserContext)
@@ -18,20 +19,20 @@ function Login() {
 		e.preventDefault()
 		// console.log('Login form submitted', login)
 		setUserInfo({ ...login, lastLogIn: new Date(Date.now()).toLocaleString() })
+		console.log(login)
 		// update login status
 		setIsLoggedIn(true)
 		// console.log('User created: ', { setUserInfo })
-		navigate('/user')
+		navigate('/')
 	}
 
 	return (
 		<div className="form">
-			<h2>Log into your Alias account!</h2>
+			<h2>Log in</h2>
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="username">Username</label>
 				<input
 					type="text"
-					placeholder="Username"
 					id="username"
 					value={login.username}
 					onChange={handleChange}
@@ -39,13 +40,15 @@ function Login() {
 				<label htmlFor="password">Password</label>
 				<input
 					type="password"
-					placeholder="password"
 					id="password"
 					value={login.password}
 					onChange={handleChange}
 				></input>
-				<button type="submit">Submit</button>
+				<button type="submit">Log in</button>
 			</form>
+			<p>
+				Don't have an Account? <Link to="/create">Create a new account</Link>
+			</p>
 		</div>
 	)
 }
