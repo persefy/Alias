@@ -39,10 +39,33 @@ body {
 	color: #202020;
 	font-family:'Avenir', 'Arial', 'sans-serif';
 	background-image: linear-gradient(to bottom, #fff 0%, #eee  51%, #fff  100%);
+	margin: 0;
 }
+.toggleDisplay {
+	display: none;
+}
+/* Heading Styling below ---------- */
+
 h1, h2 {
 	font-family: 'Helvetica';
-	text-shadow: 1px 1px #ddd;
+}
+h1 {
+	position: relative;
+	width: 100px;
+	padding-top: 35px;
+	margin: 0 auto 10px;
+	font-size: 2rem;
+	color: #1a1919;
+	text-shadow: 1px 1px 2px #ccc;
+}
+h1::before{
+	content: url('https://img.icons8.com/ios-filled/25/spy-male.png');
+	position: absolute;
+	left: -8px;
+	top: 27px;
+	width: 40px;
+	height: 40px;
+	opacity: .2;
 }
 h2 {
 	font-size: 3rem;
@@ -52,7 +75,94 @@ h2 {
 	text-indent: 10%;
 	margin: 0 auto;
 	opacity: .5;
+	text-shadow: 1px 1px #a9a8a8;
 }
+.userMgmtNav {
+	position: absolute;
+	width: 100%;
+	left: 0;
+	top: 0;
+	background-color: #5b5757;
+	padding: 2px 5px;
+}
+.userMgmtNav > div {
+	width: 90%;
+	display: flex;
+	justify-content: right;
+}
+.logInLink, .createLoginLink, .userPgLink, .logOutBtn {
+	border: none;
+	background-color: #4171eb;
+	border-radius: 2px;
+	margin: 1px 3px;
+	width: 120px;
+	text-decoration: none;
+	color: #eee;
+}
+.navbar {
+	max-width: 900px;
+	margin: 20px auto 10px;
+	/* border: solid 1px red; */
+}
+.navbar > .topLevelLink {
+	display: flex;
+	justify-content: space-around;
+}
+.trendingLink, .tagLink {
+	text-decoration: none;
+	font-size: 1.05rem;
+	position: relative;
+	border: solid 1px #eee;
+	padding: 10px 5px 10px 30px;
+	border-radius: 2px;
+	width: 100px;
+	margin: 3px;
+	background-image: linear-gradient(to right, #eee 0%, #fff 50%, #eee 100%);
+	transition: 0.7s;
+	background-size: 200% auto;
+	color: #212121;
+}
+.trendingLink:hover, .tagLink:hover {
+	background-position: center right;
+}
+.trendingLink::before {
+	content: url("https://img.icons8.com/glyph-neue/25/fire-element.png");
+	padding-bottom: 2px;
+	position: absolute;
+	left: 12px;
+}
+.tagLink::before {
+	content: url("https://img.icons8.com/ios/20/price-tag--v1.png");
+	padding-top: 3px;
+	position: absolute;
+	left: 17px;
+}
+.tagLinkHolder {
+	width: 100%;
+	display: none;
+}
+.tagItem {
+	display: block;
+	text-decoration: none;
+	padding: 10px;
+	border-bottom: solid 1px #eee;
+	text-align: left;
+	text-indent: 35%;
+	color: #b8b88e;
+	text-shadow: 1px 1px #ddd;
+}
+.tagItem:hover {
+	color: #1e52d5;
+}
+.tagItem::before {
+	content: url("https://img.icons8.com/ios/15/price-tag--v1.png");
+	padding-right: 5px;
+}
+
+/* Tag: "https://img.icons8.com/ios/50/price-tag--v1.png" */
+/* Fire: "https://img.icons8.com/glyph-neue/64/fire-element.png" */
+
+/* Heading Styling above ---------- */
 /* Contact Page styling below ----- */
 .contactPage {
 	padding: 0 10px 50px;
@@ -259,6 +369,7 @@ footer {
 /* Footer Styling above------------ */
 
 @media screen and (min-width: 450px) {
+	
 	/* Contact page styling below ----- */
 	.contactForm label, .contactForm input[type='text'], .contactForm textarea {
 		font-size: 1.2rem;
@@ -267,6 +378,38 @@ footer {
 
 }
 @media screen and (min-width: 630px) {
+	.tagLinkHolder {
+		/* display: flex;
+		justify-content: space-around; */
+	}
+	.tagLink:hover .tagLinkHolder{
+		border: solid 1px red;
+		display: block;
+	}
+	/* Heading Styling below ---------- */
+	h1 {
+		font-size: 3rem;
+	}
+	
+	h1::before {
+		content: url('https://img.icons8.com/ios-filled/40/spy-male.png');
+		left: -20px;
+	}
+	.trendingLink::before {
+		content: url("https://img.icons8.com/glyph-neue/30/fire-element.png");
+		left: 10px;
+		top: 5px;
+
+	}
+	.tagLink::before {
+		content: url("https://img.icons8.com/ios/25/price-tag--v1.png");
+		left: 15px;
+		top: 7px;
+	}
+	.tagLink::after {
+		content: 't';
+	}	
+	/* Heading Styling above ---------- */
 	/* Contact page styling below ----- */
 	.contactForm {
 		margin: 40px auto 0;
