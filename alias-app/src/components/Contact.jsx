@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState, useContext, useEffect } from 'react'
+import { useNavigate } from "react-router-dom"
 import { UserContext } from '../UserContext'
 import '../App.css'
 
@@ -18,10 +19,12 @@ function Contact() {
     const [formState, setFormState] = useState(initialState);
 
 	const [pullUsers, setPullUsers] = useState([]);
+	let navigate = useNavigate()
 	
 	useEffect(()=> {
+		
 	// 	//temp code below
-		setIsLoggedIn(true)
+		setIsLoggedIn(false)
 	// 	//temp code above
 		const getUserInfo = async () => {
 			
@@ -83,7 +86,10 @@ function Contact() {
 				});
 
 				//2 - display success msg
-				document.querySelector('.formOrMsg').innerHTML = 'Thank you! Your message has been sent.'
+				document.querySelector('.formOrMsg').innerHTML = '<p class="successMsg">Thank you! Your message has been sent.</p>'
+
+				//3 - redirect
+				setTimeout(()=> navigate('/'),10000);
 
 				//reverting to our initial state
 				setFormState(initialState)
@@ -112,7 +118,10 @@ function Contact() {
 				});
 
 				//2 - display success msg
-				document.querySelector('.formOrMsg').innerHTML = 'Thank you! Your message has been sent.'
+				document.querySelector('.formOrMsg').innerHTML = '<p class="successMsg">Thank you! Your message has been sent.</p>'
+
+				//3 - redirect
+				setTimeout(()=> navigate('/'),10000);
 
 				//reverting to our initial state
 				setFormState(initialState)
@@ -132,7 +141,7 @@ function Contact() {
 	//form code above
 
 	return isLoggedIn ? (
-		<div>
+		<section className="contactPage">
 			<h2>Contact</h2>
 			<div className="formOrMsg">
 				<p>Send your feedback using the form below</p>
@@ -142,19 +151,19 @@ function Contact() {
 						onChange={handleChange}
 						value={formState.subject}/>
 					<br/>
-					<label htmlFor="message">Message:</label>
+					<label htmlFor="message" className="msg">Message:</label>
 					<textarea id="message" cols="30" rows="5"
 						onChange={handleChange}
 						value={formState.message}></textarea>
 					<br/>
 					<div className="errorMsg"></div>
-					<button type="submit" onClick={()=> {
+					<button type="submit" className="submitFormBtn" onClick={()=> {
 							formState.date = new Date(Date.now()).toLocaleString()}}>Send</button>
 				</form>
 			</div>
-		</div>
+		</section>
 	) : (
-		<div>
+		<section className="contactPage">
 			<h2>Contact</h2>
 			<div className="formOrMsg">
 				<p>Send your feedback using the form below</p>
@@ -174,17 +183,21 @@ function Contact() {
 						onChange={handleChange}
 						value={formState.subject}/>
 					<br/>
-					<label htmlFor="message">Message:</label>
-					<textarea id="message" cols="30" rows="5"
-						onChange={handleChange}
-						value={formState.message}></textarea>
-					<br/>
+					<span className="msgContain">
+						<label htmlFor="message" className="msg">Message:</label>
+						<br/>
+						<textarea id="message" cols="30" rows="5"
+							onChange={handleChange}
+							value={formState.message}></textarea>
+						<br/>
+					</span>
+					
 					<div className="errorMsg"></div>
-					<button type="submit" onClick={()=> {
+					<button type="submit" className="submitFormBtn" onClick={()=> {
 					formState.date = new Date(Date.now()).toLocaleString()}}>Send</button>
 				</form>
 			</div>
-		</div>
+		</section>
 	)
 }
 export default Contact
