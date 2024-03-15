@@ -7,19 +7,13 @@ function Header() {
 	let navigate = useNavigate()
 	
 	const { isLoggedIn, setIsLoggedIn, userInfo, setUserInfo} = useContext(UserContext)
-	//temp code below for testing
-	useEffect(()=> {
-		setIsLoggedIn(true)
-
-	},[])
-	//temp code above for testing
 
 	return !isLoggedIn ? (
 		<header>
 			<h1 onClick={()=> {navigate('/')}}>Alias</h1>
 			<div className='userMgmtNav'>
 				<div>
-					{/* <Link to="/login" className='logInLink'>Log In</Link> */}
+					<Link to="/login" className='logInLink'>Log In</Link>
 					<Link to="/create" className='createLoginLink'>Create Account</Link>
 				</div>
 			</div>
@@ -28,6 +22,7 @@ function Header() {
 	): (
 		<header>
 			<h1 onClick={()=> {navigate('/')}}>Alias</h1>
+			
 			<div className='userMgmtNav'>
 				<div>
 					<Link to="/user/:username" className='userPgLink'>User</Link>

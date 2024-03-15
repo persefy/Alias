@@ -9,7 +9,7 @@ function Nav() {
 										document.querySelector('.tagLinkHolder').classList.toggle("toggleDisplay")
 										}}>By Tag</div>
 			</div>
-			<div className='tagLinkHolder'>
+			<div className='tagLinkHolder toggleDisplay'>
 				<Link className='tagItem' to="/tags/lifestyle" onClick={()=> {
 										document.querySelector('.tagLinkHolder').addClass.toggle("toggleDisplay")
 										}}>lifestyle</Link>
