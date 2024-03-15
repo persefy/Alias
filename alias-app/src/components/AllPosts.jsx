@@ -6,21 +6,20 @@ import Tag from './Tag'
 
 function AllPosts() {
 	const [posts, setPosts] = useState([])
-	const [filteredPosts, setFilteredPosts] = useState([])
 	const [tags] = useState(['lifestyle', 'work', 'family', 'relationship', 'friendship'])
 	const [selectedTag, setSelectedTag] = useState('')
 	const [isLoading, setIsLoading] = useState(true)
+	const [error, setError] = useState(null)
 
 
 	useEffect(() => {
 		const fetchPosts = async () => {
 			try {
-				const response = await axios.get('http://localhost:3001/post')
+				const response = await axios.get('http://localhost:3001/posts')
 				//sort createdAt
-                if (response.data.posts) {
-					console.log("fetched posts:", sortedPosts)
-                    const sortedPosts = response.data.posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-                    setPosts(sortedPosts)
+                if (response.data) {
+					console.log(response.data)
+                    setPosts(response.data)
                 } else {
                     setPosts([])
                 }
@@ -32,23 +31,6 @@ function AllPosts() {
 		fetchPosts()
 	}, [])
 
-	const handleTagClick = (tag, event) => {
-		event.preventDefault()
-		setSelectedTag((prevTag) => (prevTag === tag ? '' : tag))
-			const updatedTags = prevTags.includes(tag)
-				? prevTags.filter((t) => t !== tag)
-				: [...prevTags, tag]
-			return updatedTags
-	}
-
-	useEffect(() => {
-		if (selectedTag) {
-			const filtered = posts.filter((post) => post.tags.includes(selectedTag))
-			setFilteredPosts(filtered)	
-		} else {
-			setFilteredPosts([])
-		}
-	}, [selectedTag, posts])
 
 
 //Conditional rendering
@@ -63,40 +45,26 @@ function AllPosts() {
 	}
 	
 	
-    return (
-        <div>
-            <AddPost />
-            <div className='all-posts'>
-                {selectedTag ? (
-                    // Render filtered posts if tag is selected
-                    filteredPosts.map(post => (
-                        <div key={post.id}>
-                            <h3>{post.title}</h3>
-                            <p>{post.content}</p>
-                            <Reactions postId={post.id}/>
-                        </div>
-                    ))
-                ) : (
-                    // Render all posts if no tag is selected
-                    posts.map(post => (
-                        <div key={post.id}>
-                            <h3>{post.title}</h3>
-                            <p>{post.content}</p>
-                            <Reactions postId={post.id}/>
-                            <Tag tags={tags} onTagClick={handleTagClick} />
-							<div>
-								<p>Assigned Tags: </p>
-								{post.tags.map((tag) => (
-									<span key={tag}>{tag}</span>
-								))}
-							</div>
+	return (
+		<div>
+			<AddPost />
+			<div className='all-posts'>
+				{posts && posts.length > 0 ? (
+					posts.map(post => (
+						<div key={post.id}>
+							<h3>{post.title}</h3>
+							<p>{post.content}</p>
+							<Reactions postId={post.id}/>
+							<Tag tags={post.tags} />
 						</div>
-                    ))
-                )}
-				{selectedTag === '' && <div> Please select a tag to filter posts. </div>}
-            </div>
-        </div>
-    )
+					))
+				) : (
+					<div> No posts found. </div>
+				)}
+			</div>
+		</div>
+	)
+	
 }
 
 export default AllPosts

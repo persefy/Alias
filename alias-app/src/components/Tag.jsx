@@ -17,7 +17,7 @@ function Tag({ tags, onTagClick }) {
 
   return (
     <div>
-      <h2>Tags</h2>
+      <h2></h2>
       <div>
         {tags && tags.map((tag) => (
           <button key={tag} onClick={(event) => handleTagClick(tag)}
@@ -27,7 +27,7 @@ function Tag({ tags, onTagClick }) {
         ))}
       </div>
       <div>
-        <h3>Active Tags</h3>
+        <h3></h3>
         {activeTags.length > 0 ? (
           <ul>
             {activeTags.map((tag) => (
@@ -35,7 +35,7 @@ function Tag({ tags, onTagClick }) {
             ))}
           </ul>
         ) : (
-          <p>No active tags</p>
+          <p></p>
         )}
       </div>
     </div>
