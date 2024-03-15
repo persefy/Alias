@@ -33,6 +33,15 @@ function UserPosts({ userId }) {
 		}
 	}
 
+	const handleEditPost = async (postId, updatedPostData) => {
+		try {
+			await axios.put(`http://localhost:3001/post/${postId}`, updatedPostData)
+			setUserPosts(prevPosts => prevPosts.filter(post => post.id !== postId))
+		} catch (error) {
+			console.error('Error updating post:', error)
+		}
+	}
+
 	if (isLoading) {
 		return <div> Loading user posts...</div>
 	}
@@ -52,6 +61,7 @@ function UserPosts({ userId }) {
 						<h3>{post.title}</h3>
 						<p>{post.content}</p>
 						<button onClick={() => handleDeletePost(post.id)}> Delete </button>
+						<button onClick={() => handleEditPost(post.id, updatedPostData)}> Edit </button>
 					</div>
 				))
 			)}

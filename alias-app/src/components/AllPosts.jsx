@@ -52,7 +52,8 @@ function AllPosts() {
 				{posts && posts.length > 0 ? (
 					posts.map((post, index) => (
 						<div key={index}>
-							<h3>{post.title}</h3>
+							{/* <h4> Alias: {post.alias}</h4> */}
+							<h3> Alias: {post.alias} | Title: {post.title}</h3>
 							<p>{post.content}</p>
 							<Reactions postId={post.id}/>
 							<Tag tags={post.tags} />
