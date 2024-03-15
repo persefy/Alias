@@ -1,20 +1,25 @@
 import { useEffect, useState } from "react"
 import Reactions from "../components/Reactions"
 import AllPosts from '../components/AllPosts'
+import axios from "axios"
 
 function HomePosts({ startDate, endDate}) {
 	const [posts, setPosts] = useState([])
 
 	useEffect(() => {
 		const fetchPosts = async () => {
-            try {
-                const response = await axios.get('http://localhost:3001/post')
-                const sortedPosts = response.data.posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-                setPosts(sortedPosts)
-            } catch (error) {
-                console.error('Error fetching posts:', error)
-            }
-        }
+			try {
+				const response = await axios.get('http://localhost:3001/post')
+				console.log(response.data)
+				if (response.data && Array.isArray(response.data)) {
+					setPosts(response.data)
+				} else {
+					setPosts([])
+				}
+			} catch (error) {
+				console.error('Error fetching posts:', error)
+			}
+		}
         fetchPosts()
 	}, [])
 
