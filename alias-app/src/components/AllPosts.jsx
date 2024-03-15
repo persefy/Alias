@@ -17,9 +17,13 @@ function AllPosts() {
 			try {
 				const response = await axios.get('http://localhost:3001/post')
 				//sort createdAt
-				const sortedPosts = response.data.posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-				setPosts(sortedPosts)
-				setIsLoading(false)
+                if (response.data.posts) {
+                    const sortedPosts = response.data.posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                    setPosts(sortedPosts)
+                } else {
+                    setPosts([])
+                }
+                setIsLoading(false)
 			} catch (error) {
 				console.error('Error fetching posts:', error)
 			}
