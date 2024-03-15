@@ -50,8 +50,8 @@ function AllPosts() {
 			<AddPost />
 			<div className='all-posts'>
 				{posts && posts.length > 0 ? (
-					posts.map(post => (
-						<div key={post.id}>
+					posts.map((post, index) => (
+						<div key={index}>
 							<h3>{post.title}</h3>
 							<p>{post.content}</p>
 							<Reactions postId={post.id}/>
