@@ -7,7 +7,7 @@ import Tag from './Tag'
 function AllPosts() {
 	const [posts, setPosts] = useState([])
 	const [filteredPosts, setFilteredPosts] = useState([])
-	const [tags, setTags] = useState(['lifestyle', 'work', 'family', 'relationship', 'friendship'])
+	const [tags] = useState(['lifestyle', 'work', 'family', 'relationship', 'friendship'])
 	const [selectedTag, setSelectedTag] = useState('')
 	const [isLoading, setIsLoading] = useState(true)
 
@@ -29,24 +29,31 @@ function AllPosts() {
 
 	const handleTagClick = (tag, event) => {
 		event.preventDefault()
-		setSelectedTags((prevTags) => {
+		setSelectedTag((prevTags) => {
 			const updatedTags = prevTags.includes(tag)
 				? prevTags.filter((t) => t !== tag)
 				: [...prevTags, tag]
 			return updatedTags
 		})
-
 	}
+
+	useEffect(() => {
+		if (selectedTag) {
+			const filtered = posts.filter((post) => post.tags.includes(selectedTag))
+			setFilteredPosts(filtered)	
+		} else {
+			setFilteredPosts([])
+		}
+	}, [selectedTag, posts])
+
 
 //Conditional rendering
 	if (isLoading) {
 		return <div> Loading...</div>;
 	}
-
 	if (posts.length === 0) {
 		return <div> No posts found. </div>;
 	}
-
 	if (error) {
 		return <div> Error: {error.message}</div>;
 	}
@@ -62,7 +69,7 @@ function AllPosts() {
                         <div key={post.id}>
                             <h3>{post.title}</h3>
                             <p>{post.content}</p>
-                            <Reactions />
+                            <Reactions postId={post.id}/>
                         </div>
                     ))
                 ) : (
@@ -72,10 +79,10 @@ function AllPosts() {
                             <h3>{post.title}</h3>
                             <p>{post.content}</p>
                             <Reactions postId={post.id}/>
-                            <Tag tags={['lifestyle', 'work', 'family', 'relationship', 'friendship']} onTagClick={handleTagClick} />
+                            <Tag tags={tags} onTagClick={handleTagClick} />
 							<div>
 								<p>Assigned Tags: </p>
-								{selectedTags.map((tag) => (
+								{post.tags.map((tag) => (
 									<span key={tag}>{tag}</span>
 								))}
 							</div>
