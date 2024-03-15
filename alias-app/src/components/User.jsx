@@ -1,29 +1,39 @@
 import { useContext } from 'react'
 import { UserContext } from '../UserContext'
 import { Link } from 'react-router-dom'
+import AllPosts from './AllPosts'
 
 function User() {
-	const { userInfo, setUserInfo, setIsLoggedIn } = useContext(UserContext)
-	const { username } = userInfo.username
+	const { setIsLoggedIn, userInfo } = useContext(UserContext)
 
-	const handleLogout = () => {
-		setUserInfo({})
-		setIsLoggedIn(false)
-	}
+	const { username } = userInfo
+	const { fullName } = userInfo
 
 	return (
-		<div>
+		<>
 			{username ? (
 				<>
-					{username}
-					<button onClick={handleLogout}>Logout</button>
+					<p>{username}</p>
+					<h3>Welcome back to your personal blogs</h3>
+					<p>
+						Write about what speaks to you. Hear what others have to say. And
+						<span style={{ fontStyle: 'italic', fontWeight: 'bold' }}>
+							{' '}
+							Never
+						</span>{' '}
+						reveal your name.
+					</p>
+					<AllPosts />
 				</>
 			) : (
-				<>
-					User <Link to="/login">Login</Link>
-				</>
+				<div>
+					<h1>
+						<Link to="/login">Log in</Link>
+					</h1>
+					<p>Please log in to see and post your blogs.</p>
+				</div>
 			)}
-		</div>
+		</>
 	)
 }
 
