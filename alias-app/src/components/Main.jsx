@@ -7,7 +7,7 @@ import TagPage from '../helpers/TagPage'
 import User from './User'
 import Contact from './Contact'
 import CreateAccount from './CreateAccount'
-// import Login from './Login'
+import Login from './Login'
 
 import { Route, Routes } from 'react-router-dom'
 
@@ -18,13 +18,11 @@ function Main() {
 				<Route path="/" element={<Home />} />
 				<Route exact path="/posts/all" element={<AllPosts />} />
 				<Route path="/posts/trending" element={<Trending />} />
-				<Route path='/tags/:tag' element={<TagPage />}/>
+				<Route path="/tags/:tag" element={<TagPage />} />
 				<Route path="/tags" element={<AllTags />} />
 				<Route path="/user/:username" element={<User />} />
 				<Route path="/contact" element={<Contact />} />
-				{/* <Route path="/login" element={<Login />} /> 
-				commented out until Login component 'export default issue is fixed"
-				*/}
+				<Route path="/login" element={<Login />} />
 				<Route path="/create" element={<CreateAccount />} />
 			</Routes>
 		</main>

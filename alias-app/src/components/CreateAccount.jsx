@@ -82,6 +82,13 @@ function CreateAccount() {
 				phoneNumber: formState.phoneNumber,
 				birthdate: formState.birthdate,
 			})
+			console.log('Updated User Info:', {
+				fullName: formState.fullName,
+				username: formState.username,
+				email: formState.email,
+				phoneNumber: formState.phoneNumber,
+				birthdate: formState.birthdate,
+			})
 			setIsLoggedIn(true)
 			setIsAccountCreated(true)
 		} else {
