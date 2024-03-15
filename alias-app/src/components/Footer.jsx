@@ -5,7 +5,7 @@ function Footer() {
 	return (
 		<footer>
 			<div className="footerCtaBtnContain">
-				<p>Questions? Suggestions? We'd love to hear from you!</p>
+				<p><span className="footerUnderline">Questions?</span> <span className="footerUnderline">Suggestions?</span> We'd love to hear from you!</p>
 				
 				<Link to="/contact" className='contactCtaBtn'>Send Feedback</Link>
 

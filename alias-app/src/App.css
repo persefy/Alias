@@ -1,29 +1,220 @@
-#root {
-	max-width: 1280px;
-	margin: 0 auto;
-	text-align: center;
+@keyframes successImgTransition {
+	/* ref: https://stackoverflow.com/questions/6805482/css3-transition-animation-on-load */
+	0% {
+	  content: url("https://img.icons8.com/ios/50/228BE6/sent--v1.png");
+	} 
+	20% {
+		opacity: .7;
+		content: url("https://img.icons8.com/ios/50/228BE6/sent--v1.png");
+	}
+	60% {
+		background-position: left center;
+	}
+	80% {
+		background-position: right center;
+		content: url("https://img.icons8.com/ios/50/228BE6/checked--v1.png");
+		width: 65px;
+	}
+	100% {
+		content: 'Redirecting...';
+	}
+  }
+  @keyframes successMsgTransition {
+	0% {
+		opacity: 0;
+		background-position: left center;
+	}
+	50% {
+		opacity: .6;
+		background-position: left center;
+	}
+	100% {
+		opacity: 1;
+		background-position: right center;
+	}
 }
+body {
+	text-align: center;
+	background-color: #fff;
+	color: #202020;
+	font-family:'Avenir', 'Arial', 'sans-serif';
+	background-image: linear-gradient(to bottom, #fff 0%, #eee  51%, #fff  100%);
+}
+h1, h2 {
+	font-family: 'Helvetica';
+	text-shadow: 1px 1px #ddd;
+}
+h2 {
+	font-size: 3rem;
+	color: #b2aa84;
+	text-align: left;
+	max-width: 900px;
+	text-indent: 10%;
+	margin: 0 auto;
+	opacity: .5;
+}
+/* Contact Page styling below ----- */
+.contactPage {
+	padding: 0 10px 50px;
+}
+.contactForm {
+	margin: 0 10px;
+	max-width: 500px;
+	box-shadow: 5px 5px 10px #ddd;
+	padding: 50px 10px;
+	border-radius: 2px;
+	background-image: linear-gradient(to bottom, #ededed 0%, #eee  10%, #eee 20%, #eee 60%, #fff  100%);
+}
+.formOrMsg p {
+	font-size: 1.15rem;
+	color: #000;
+	margin: 40px 0;
+}
+.contactForm label {
+	display: inline-block;
+ 	width: 30%;
+	text-align: left;
+	text-indent: 1px;
+	font-weight: 700;
+	color: #5b5757;
+}
+.contactForm label, .contactForm input[type='text'], .contactForm textarea {
+	font-size: .95rem;
+}
+.contactForm label::after {
+	content: ' *';
+	color: #811f4b;
+	opacity: .5;
+}
+.contactForm input[type='text'], .contactForm textarea {
+	width: 60%;
+	border: none;
+	color: #2e60cb;;
+	background-color: #eee;
+	border-bottom: solid 3px #e0dede;
+	font-family:'Avenir', 'Arial', 'sans-serif';
+	padding: 2px 5px;
+}
+.contactForm input[type='text']:hover, .contactForm textarea:hover {
+	background-color: #fefcef;
+}
+.contactForm input[type='text']:focus, .contactForm textarea:focus {
+	outline: none;
+	border-bottom: solid 3px #2e60cb;
+}
+.contactForm input[type='text'] {
+	height: 25px;
+	margin: 3px 0;
+}
+.msgContain {
+	display: flex;
+	justify-content: space-between;
+	width: 92%;
+	margin: 0 auto;
+}
+.contactForm textarea {
+	margin-top: 3px;
+	width: 65%;
+	margin-left: -3px;
+	min-width: 65%;
+	max-width: 250px;
+}
+.contactForm label.msg {
+	place-self: center center;
+	width: 32%;
+	margin-right: 4px;
+}
+.contactForm [type=text]:focus {
+	margin-bottom: 3px;  
+  }
+  .contactForm textarea:focus {
+	margin-top: 3px;
+  }
+.submitFormBtn {
+	color: #eee;
+	font-size: 1.05rem;
+	border: none;
+	width: 60%;
+	display: inline-block;
+	padding: 20px 20px;
+	margin-top: 30px;
+	border-radius: 3px;
+	background-image: linear-gradient(to right, #1e52d5 0%, #bae3f3  51%, #1e52d5  100%);
+	transition: 0.7s;
+	background-size: 200% auto;
+}
+.submitFormBtn:hover {
+	background-position: right center;
+	color: #fff;
+}
+.errorMsg {
+	margin: 10px;
+	color: #811f4b;
+}
+p.successMsg {
+	font-size: 1.35rem;
+	margin: 150px 10px 50px;
+	min-height: 200px;
+	position: relative;
+	animation: 4s ease-out 0s 1 successMsgTransition;
+}
+
+.successMsg::before {
+	content: 'Redirecting...';
+	color: #1e52d5;
+	position: absolute;
+	top: -115px;
+	left: -50px;
+	right: -50px;
+	border-radius: 50px;
+	opacity: .95;
+	background-image: linear-gradient(to right, #ddd 0%, #fff 50%, #ddd 100%);
+	background-position: right center;
+	background-size: 200% auto;
+	width: 300px;
+	margin: 0 auto;
+	padding: 10px 5px 5px;
+	animation: 7s ease-out 0s 1 successImgTransition;
+}
+/* Contact Page styling above ----- */
+
 /* Footer Styling below------------ */
 footer {
 	background-color: #f9f8f8;
 	padding-bottom: 10px;
-	margin-top: 50px;
 }
 .footerCtaBtnContain {
 	background-color: #5f5e5e;
+	color: #eee;
+
 	padding: 40px 20px 60px;
 	font-size: 1.2rem;
 	background-image: url("https://www.transparenttextures.com/patterns/wild-oliva.png");
 	/* ref: https://www.transparenttextures.com/ */
 }
+.footerUnderline {
+	position: relative;
+	color: #fff;
+}
+.footerUnderline::after {
+	position: absolute;
+	bottom: -3px;
+	left: 5px;
+	content: '';
+	width: 60%;
+	height: 2px;
+	border-bottom: 2px solid #b8b88e;
+	opacity: .75;
+}
 .contactCtaBtn {
-	color: #000;
+	color: #343333;
 	display: inline-block;
+	font-weight: 600;
 	padding: 12px 20px;
 	margin-top: 5px;
 	text-decoration: none;
 	border-radius: 3px;
-	background-image: linear-gradient(to right, #a29e89 0%, #f5f5c4  51%, #b2aa84  100%);
+	background-image: linear-gradient(to right, #9f997a 0%, #b8b88e  51%, #b2aa84  100%);
 	transition: 0.5s;
 	background-size: 200% auto;
 	/* gradient ref: https://gradientbuttons.colorion.co/ */
@@ -67,7 +258,23 @@ footer {
 }
 /* Footer Styling above------------ */
 
+@media screen and (min-width: 450px) {
+	/* Contact page styling below ----- */
+	.contactForm label, .contactForm input[type='text'], .contactForm textarea {
+		font-size: 1.2rem;
+	}
+	/* Contact page styling above ----- */
+
+}
 @media screen and (min-width: 630px) {
+	/* Contact page styling below ----- */
+	.contactForm {
+		margin: 40px auto 0;
+	}
+	.contactForm label {
+		text-indent: 35px;
+	}
+	/* Contact page styling above ----- */
 	/* Footer Styling below------------ */
 	.footerTeamRef p {
 		margin-top: 15px;
