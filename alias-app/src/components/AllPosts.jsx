@@ -17,7 +17,7 @@ function AllPosts() {
 			try {
 				const response = await axios.get('http://localhost:3001/posts')
 				//sort createdAt
-                if (response.data) {
+                if (Array.isArray(response.data)) {
 					console.log(response.data)
                     setPosts(response.data)
                 } else {
