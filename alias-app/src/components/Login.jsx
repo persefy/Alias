@@ -24,8 +24,6 @@ function Login() {
 		navigate('/user')
 	}
 
-	//Need to include error handling in case passwords do not match...etc
-
 	return (
 		<div className="form">
 			<h2>Log into your Alias account!</h2>

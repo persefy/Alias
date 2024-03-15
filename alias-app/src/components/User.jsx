@@ -1,12 +1,13 @@
 import { useContext } from 'react'
 import { UserContext } from '../UserContext'
+import { Link } from 'react-router-dom'
 import UserPosts from '../helpers/UserPosts'
-import AddPost from '../helpers/AddPost'
-import TrendingPosts from '../helpers/TrendingPosts'
 import Contact from './Contact'
+import Footer from './Footer'
 
 function User() {
-	const { setIsLoggedIn } = useContext(UserContext)
+	const { setIsLoggedIn, userInfo } = useContext(UserContext)
+	const username = userInfo.username
 
 	const handleLogout = () => {
 		setIsLoggedIn(false)
@@ -14,18 +15,22 @@ function User() {
 
 	return (
 		<>
+			{username ? (
+				<h1>Username: {username}</h1>
+			) : (
+				<h1>
+					<Link to="/login">Log in</Link>
+				</h1>
+			)}
 			<h2>Welcome to Alias</h2>
 			<p>
 				Write about what speaks to you. Hear what others have to say. And{' '}
 				<span style={{ fontStyle: 'italic', fontWeight: 'bold' }}>Never</span>{' '}
 				reveal your name.
 			</p>
-			<AddPost />
 			<UserPosts />
-			<TrendingPosts />
 			<Contact />
 			<Footer />
-
 			<button onClick={handleLogout}>Log Out</button>
 		</>
 	)

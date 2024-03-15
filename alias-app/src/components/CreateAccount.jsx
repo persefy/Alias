@@ -10,7 +10,7 @@ function CreateAccount() {
 		passwordConfirm: '',
 		email: '',
 		phoneNumber: '',
-		birthDate: '',
+		birthdate: '',
 		valid: true,
 	}
 	const [formState, setFormState] = useState(initialState)
@@ -51,8 +51,8 @@ function CreateAccount() {
 			errors.email = 'Email is required'
 			isFormValid = false
 		}
-		if (!formState.birthDate) {
-			errors.birthDate = 'Birth date is required'
+		if (!formState.birthdate) {
+			errors.birthdate = 'Birthdate is required'
 			isFormValid = false
 		}
 		setFormState({ ...formState, valid: isFormValid })
@@ -64,13 +64,12 @@ function CreateAccount() {
 		e.preventDefault()
 
 		if (validateUserInputs()) {
-			// Assuming setUserInfo updates the user context, reflecting a successful account creation
 			setUserInfo({
 				fullName: formState.fullName,
 				username: formState.username,
 				email: formState.email,
 				phoneNumber: formState.phoneNumber,
-				birthDate: formState.birthDate,
+				birthdate: formState.birthdate,
 			})
 			setFormState(initialState)
 			setIsLoggedIn(true)
@@ -89,7 +88,6 @@ function CreateAccount() {
 				<label htmlFor="fullName">Full Name</label>
 				<input
 					type="text"
-					placeholder="Full Name"
 					id="fullName"
 					value={formState.fullName}
 					onChange={handleChange}
@@ -101,7 +99,6 @@ function CreateAccount() {
 				<label htmlFor="username">Username</label>
 				<input
 					type="text"
-					placeholder="Username"
 					id="username"
 					value={formState.username}
 					onChange={handleChange}
@@ -113,7 +110,6 @@ function CreateAccount() {
 				<label htmlFor="password">Password</label>
 				<input
 					type="password"
-					placeholder="Password"
 					id="password"
 					value={formState.password}
 					onChange={handleChange}
@@ -125,7 +121,6 @@ function CreateAccount() {
 				<label htmlFor="passwordConfirm">Confirm password</label>
 				<input
 					type="password"
-					placeholder="Confirm password"
 					id="passwordConfirm"
 					value={formState.passwordConfirm}
 					onChange={handleChange}
@@ -137,7 +132,6 @@ function CreateAccount() {
 				<label htmlFor="email">Email</label>
 				<input
 					type="email"
-					placeholder="Email"
 					id="email"
 					value={formState.email}
 					onChange={handleChange}
@@ -146,7 +140,6 @@ function CreateAccount() {
 				<label htmlFor="phoneNumber">Phone Number</label>
 				<input
 					type="text"
-					placeholder="Phone Number"
 					id="phoneNumber"
 					value={formState.phoneNumber}
 					onChange={handleChange}
@@ -155,16 +148,15 @@ function CreateAccount() {
 					<p className="error">{inputErrors.phoneNumber}</p>
 				)}
 
-				<label htmlFor="birthDate">Birth Date</label>
+				<label htmlFor="birthdate">Birthdate</label>
 				<input
 					type="date"
-					placeholder="Birth Date"
-					id="birthDate"
-					value={formState.birthDate}
+					id="birthdate"
+					value={formState.birthdate}
 					onChange={handleChange}
 				/>
-				{inputErrors.birthDate && (
-					<p className="error">{inputErrors.birthDate}</p>
+				{inputErrors.birthdate && (
+					<p className="error">{inputErrors.birthdate}</p>
 				)}
 				{isAccountCreated && (
 					<p className="valid">Account successfully created!</p>
