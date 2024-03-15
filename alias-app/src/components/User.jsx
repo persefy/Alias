@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 function User() {
 	const { userInfo, setUserInfo, setIsLoggedIn } = useContext(UserContext)
-	const username = userInfo.username
+	const { username } = userInfo.username
 
 	const handleLogout = () => {
 		setUserInfo({})
