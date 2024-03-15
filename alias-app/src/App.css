@@ -45,14 +45,16 @@ body {
 	display: none;
 }
 /* Heading Styling below ---------- */
+.homeIntro {
 
+}
 h1, h2 {
 	font-family: 'Helvetica';
 }
 h1 {
 	position: relative;
 	width: 100px;
-	padding-top: 35px;
+	padding-top: 50px;
 	margin: 0 auto 10px;
 	font-size: 2rem;
 	color: #1a1919;
@@ -62,7 +64,7 @@ h1::before{
 	content: url('https://img.icons8.com/ios-filled/25/spy-male.png');
 	position: absolute;
 	left: -8px;
-	top: 27px;
+	top: 40px;
 	width: 40px;
 	height: 40px;
 	opacity: .2;
@@ -74,6 +76,7 @@ h2 {
 	max-width: 900px;
 	text-indent: 10%;
 	margin: 0 auto;
+	padding: 10px;
 	opacity: .5;
 	text-shadow: 1px 1px #a9a8a8;
 }
@@ -98,6 +101,7 @@ h2 {
 	width: 120px;
 	text-decoration: none;
 	color: #eee;
+	font-family:'Avenir', 'Arial', 'sans-serif';
 }
 .navbar {
 	max-width: 900px;
@@ -113,7 +117,7 @@ h2 {
 	font-size: 1.05rem;
 	position: relative;
 	border: solid 1px #eee;
-	padding: 10px 5px 10px 30px;
+	padding: 5px 5px 5px 30px;
 	border-radius: 2px;
 	width: 100px;
 	margin: 3px;
@@ -163,6 +167,36 @@ h2 {
 /* Fire: "https://img.icons8.com/glyph-neue/64/fire-element.png" */
 
 /* Heading Styling above ---------- */
+/* Home Styling below ------------- */
+.home {
+	padding: 10px;
+	max-width: 1030px;
+	margin: 0 auto;
+	min-height: 600px;
+}
+.addPostSection {
+	margin: 10px;
+}
+.addPostSection h2, .homeTrending h2, .homePosts h2 {
+	font-size: 2rem;
+}
+.homeTrending {
+	padding: 10px 0;
+}
+.homePosts {
+	padding: 10px 0;
+}
+.linkFromHome {
+	text-decoration: none;
+	color:#47a6d8;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+.linkFromHome:hover {
+	color:#5bb1e0;
+}
+
+/* Home Styling above ------------- */
 /* Contact Page styling below ----- */
 .contactPage {
 	padding: 0 10px 50px;
@@ -378,6 +412,13 @@ footer {
 
 }
 @media screen and (min-width: 630px) {
+	
+	/* Heading Styling below ---------- */
+	.logInLink, .createLoginLink, .userPgLink, .logOutBtn {
+		padding: 7px 30px;
+		margin: 2px 5px;
+		font-size: 1rem;
+	}
 	.tagLinkHolder {
 		/* display: flex;
 		justify-content: space-around; */
@@ -386,14 +427,15 @@ footer {
 		border: solid 1px red;
 		display: block;
 	}
-	/* Heading Styling below ---------- */
 	h1 {
 		font-size: 3rem;
+		padding-top: 60px;
 	}
 	
 	h1::before {
 		content: url('https://img.icons8.com/ios-filled/40/spy-male.png');
 		left: -20px;
+		top: 50px;
 	}
 	.trendingLink::before {
 		content: url("https://img.icons8.com/glyph-neue/30/fire-element.png");
@@ -407,8 +449,14 @@ footer {
 		top: 7px;
 	}
 	.tagLink::after {
-		content: 't';
-	}	
+		content: url('https://img.icons8.com/ios-filled/10/sort-down.png');
+
+	}
+	/* selector not working to change upon hover */
+	.tagLink:hover .tagLink::after {
+		border: solid 1px blue; 
+
+	}
 	/* Heading Styling above ---------- */
 	/* Contact page styling below ----- */
 	.contactForm {
@@ -432,4 +480,28 @@ footer {
 	}
 	/* Footer Styling above------------ */
 }
+@media screen and (min-width: 750px) {
+	/* Home Styling below ------------- */
+	.allAndTrending {
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: space-around;
+	}
+	.addPostSection {
+		max-width: 600px;
+		margin: 10px auto;
+	}
+	.homeTrending {
+		width: 35%;
+	}
+	.homePosts {
+		width: 65%;
+	}
+	.linkFromHome {
+		text-align: center;
+		margin: 10px;
+		border: solid 1px #ccc;
+	}
+	/* Home Styling above ------------- */
 	
+}

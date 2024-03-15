@@ -5,8 +5,11 @@ import { UserContext } from '../UserContext'
 import '../App.css'
 
 function Contact() {
-	const { isLoggedIn, setIsLoggedIn, userInfo, setUserInfo} = useContext(UserContext)
+	const { isLoggedIn, userInfo} = useContext(UserContext)
 	//potentially remove, once getting info from API/user login state: 'setIsLoggedIn', 'userInfo', and 'setUserInfo' from above
+
+	const userFullNameIs = userInfo.fullName
+	const userEmailIs = userInfo.email
 
 	const initialState = {
 		subject: '',
@@ -18,43 +21,45 @@ function Contact() {
 
     const [formState, setFormState] = useState(initialState);
 
-	const [pullUsers, setPullUsers] = useState([]);
+	//const [pullUsers, setPullUsers] = useState([]);
+
 	let navigate = useNavigate()
 	
-	useEffect(()=> {
+	// useEffect(()=> {
 		
-	// 	//temp code below
-		setIsLoggedIn(false)
-	// 	//temp code above
-		const getUserInfo = async () => {
+	// // 	//temp code below
+	// 	// setIsLoggedIn(false)
+	// // 	//temp code above
+	// 	const getUserInfo = async () => {
 			
-			try {
-				const response = await axios.get('http://localhost:3001/user')
+	// 		try {
+	// 			const response = await axios.get('http://localhost:3001/user')
 				
-				setPullUsers(response.data)
-				console.log(pullUsers, isLoggedIn)
+	// 			setPullUsers(response.data)
+	// 			console.log(pullUsers, isLoggedIn)
 
-				if (isLoggedIn) {
-					console.log(pullUsers, isLoggedIn)
-					let findUserId = pullUsers.findIndex(user => { return user.username === '2morrow2Day'}) //ref: https://www.geeksforgeeks.org/javascript-get-the-index-of-an-object-by-its-property/
-					console.log(findUserId)
+	// 			if (isLoggedIn) {
+	// 				console.log(pullUsers, isLoggedIn)
+	// 				let findUserId = pullUsers.findIndex(user => { return user.username === '2morrow2Day'}) //ref: https://www.geeksforgeeks.org/javascript-get-the-index-of-an-object-by-its-property/
+	// 				console.log(findUserId)
 					
-					let userFullName = pullUsers[findUserId].fullName
-					let userEmail = pullUsers[findUserId].email
-					console.log(userFullName, userEmail)
+	// 				let userFullName = pullUsers[findUserId].fullName
+	// 				let userEmail = pullUsers[findUserId].email
+	// 				console.log(userFullName, userEmail)
 					
-					setUserInfo({...userInfo, fullName: `${userFullName}`, email: `${userEmail}`})
-				}
-			} catch (error) {
-				console.error('Error fetching user info:', error)
-			}
-		}
-		//option 1 - we lose the grabbed axios data if the user refreshes the page
-		getUserInfo()
-	},[])
+	// 				setUserInfo({...userInfo, fullName: `${userFullName}`, email: `${userEmail}`})
+	// 			}
+	// 		} catch (error) {
+	// 			console.error('Error fetching user info:', error)
+	// 		}
+	// 	}
+	// 	//option 1 - we lose the grabbed axios data if the user refreshes the page
+	// 	getUserInfo()
+	//},[])
 		//option 2 - alternate code to be implemented if we can get infinite loop to stop...
 			//getUserInfo()
 	// },[pullUsers,userInfo,isLoggedIn])
+
 
 	const handleSubmit = async (event) => {
 		event.preventDefault()
