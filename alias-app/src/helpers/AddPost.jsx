@@ -47,15 +47,18 @@ function AddPost() {
 
   return (
     <div>
-      <h2>Create a Post</h2>
-      <form onSubmit={handleSubmit}>
+      <h3>Create a Post</h3>
+      <form  className='addPostForm' onSubmit={handleSubmit}>
         <label htmlFor="title">Title: </label>
         <input type="text" id="title" onChange={handleChange} value={postFormState.title} />
         <label htmlFor="alias">Alias: </label>
         <input type="text" id="alias" onChange={handleChange} value={postFormState.alias} />
         <label htmlFor="content">What's on your mind?</label>
         <textarea id="content" cols="30" rows="5" onChange={handleChange} value={postFormState.content} />
-        <Tag tags={['lifestyle', 'work', 'family', 'relationship', 'friendship']} onTagClick={handleTagClick} />
+        <label className="tagLabel">Tags</label>
+        <span className="tagPostItem">
+          <Tag tags={['lifestyle', 'work', 'family', 'relationship', 'friendship']} onTagClick={handleTagClick} />
+        </span>
         <button type="submit">Post</button>
       </form>
     </div>

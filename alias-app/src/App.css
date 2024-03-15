@@ -72,7 +72,7 @@ h1::before{
 	height: 40px;
 	opacity: .2;
 }
-h2 {
+h2, h3 {
 	font-size: 3rem;
 	color: #b2aa84;
 	text-align: left;
@@ -180,7 +180,15 @@ h2 {
 .addPostSection {
 	margin: 10px;
 }
-.addPostSection h2, .homeTrending h2, .homePosts h2 {
+.contactForm label, .addPostForm label.tagLabel {
+	width: 100%;
+	text-indent: 15px;padding-top: 10px;
+}
+.tagPostItem button {
+	color: #1e52d5;
+	border: none;
+}
+.addPostSection h3, .homeTrending h2, .homePosts h2 {
 	font-size: 2rem;
 }
 .homeTrending {
@@ -204,7 +212,7 @@ h2 {
 .contactPage {
 	padding: 0 10px 50px;
 }
-.contactForm {
+.contactForm, .addPostForm {
 	margin: 0 10px;
 	max-width: 500px;
 	box-shadow: 5px 5px 10px #ddd;
@@ -217,7 +225,7 @@ h2 {
 	color: #000;
 	margin: 40px 0;
 }
-.contactForm label {
+.contactForm label, .addPostForm label {
 	display: inline-block;
  	width: 30%;
 	text-align: left;
@@ -233,7 +241,7 @@ h2 {
 	color: #811f4b;
 	opacity: .5;
 }
-.contactForm input[type='text'], .contactForm textarea {
+.contactForm input[type='text'], .contactForm textarea, .addPostForm input[type='text'], .addPostForm textarea{
 	width: 60%;
 	border: none;
 	color: #2e60cb;;
@@ -242,7 +250,7 @@ h2 {
 	font-family:'Avenir', 'Arial', 'sans-serif';
 	padding: 2px 5px;
 }
-.contactForm input[type='text']:hover, .contactForm textarea:hover {
+.contactForm input[type='text']:hover, .contactForm textarea:hover, .addPostForm input[type='text']:hover, .addPostForm textarea:hover  {
 	background-color: #fefcef;
 }
 .contactForm input[type='text']:focus, .contactForm textarea:focus {
@@ -458,6 +466,11 @@ footer {
 		content: url('https://img.icons8.com/ios-filled/10/sort-down.png');
 
 	}
+	.addPostForm {
+		margin: 0 auto;
+		max-width: 600px;
+	}
+	
 	/* selector not working to change upon hover */
 	.tagLink:hover .tagLink::after {
 		border: solid 1px blue; 
