@@ -15,7 +15,7 @@ function Home() {
 	if (isLoggedIn) {
 		// userNameDisplay.innerHTML=`${userFullNameIs}`
 	}
-	return isLoggedIn ? (
+	return !isLoggedIn ? (
 		<div className='home'>
 			<section className='homeIntro'>
 				<h2>Welcome to Alias</h2>
