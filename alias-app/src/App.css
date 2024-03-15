@@ -45,8 +45,11 @@ body {
 	display: none;
 }
 /* Heading Styling below ---------- */
-.homeIntro {
-
+.homeIntro p {
+	background-color: #fff;
+	margin: 10px 0 40px;
+	padding: 40px 0;
+	border-bottom: solid 5px #eee;
 }
 h1, h2 {
 	font-family: 'Helvetica';
@@ -412,7 +415,10 @@ footer {
 
 }
 @media screen and (min-width: 630px) {
-	
+	.homeIntro p {
+		font-size: 1.25rem;
+		padding: 40px 10px;
+	}
 	/* Heading Styling below ---------- */
 	.logInLink, .createLoginLink, .userPgLink, .logOutBtn {
 		padding: 7px 30px;
@@ -493,6 +499,9 @@ footer {
 	}
 	.homeTrending {
 		width: 35%;
+		border: solid 1px #ccc;
+		min-height: 400px;
+		margin: 0 10px;
 	}
 	.homePosts {
 		width: 65%;
