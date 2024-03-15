@@ -6,8 +6,6 @@ import Tag from './Tag'
 
 function AllPosts() {
 	const [posts, setPosts] = useState([])
-	const [tags] = useState(['lifestyle', 'work', 'family', 'relationship', 'friendship'])
-	const [selectedTag, setSelectedTag] = useState('')
 	const [isLoading, setIsLoading] = useState(true)
 	const [error, setError] = useState(null)
 
@@ -52,7 +50,6 @@ function AllPosts() {
 				{posts && posts.length > 0 ? (
 					posts.map((post, index) => (
 						<div key={index}>
-							{/* <h4> Alias: {post.alias}</h4> */}
 							<h3> Alias: {post.alias} | Title: {post.title}</h3>
 							<p>{post.content}</p>
 							<Reactions postId={post.id}/>
