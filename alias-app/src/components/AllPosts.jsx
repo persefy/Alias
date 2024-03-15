@@ -18,6 +18,7 @@ function AllPosts() {
 				const response = await axios.get('http://localhost:3001/post')
 				//sort createdAt
                 if (response.data.posts) {
+					console.log("fetched posts:", sortedPosts)
                     const sortedPosts = response.data.posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
                     setPosts(sortedPosts)
                 } else {
@@ -33,12 +34,11 @@ function AllPosts() {
 
 	const handleTagClick = (tag, event) => {
 		event.preventDefault()
-		setSelectedTag((prevTags) => {
+		setSelectedTag((prevTag) => (prevTag === tag ? '' : tag))
 			const updatedTags = prevTags.includes(tag)
 				? prevTags.filter((t) => t !== tag)
 				: [...prevTags, tag]
 			return updatedTags
-		})
 	}
 
 	useEffect(() => {
