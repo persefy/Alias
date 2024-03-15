@@ -10,7 +10,6 @@ function HomePosts({ startDate, endDate}) {
 		const fetchPosts = async () => {
 			try {
 				const response = await axios.get('http://localhost:3001/post')
-				console.log(response.data)
 				if (response.data && Array.isArray(response.data)) {
 					setPosts(response.data)
 				} else {
